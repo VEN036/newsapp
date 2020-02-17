@@ -1,0 +1,55 @@
+.image-card img {
+    max-height: 45vh;
+    overflow: hidden;
+  }
+
+.main-content {
+    height: 100%;
+}
+
+.scroll-content {
+    background-color: lightgrey;
+    background-image: linear-gradient(lightgrey, lightgrey);
+}
+
+.scroll-content {
+    background-color: green;
+    background-image: linear-gradient(green, yellow)
+}
+
+ion-button {
+    --color: #383a3e;
+}
+
+ion-searchbar {
+    --color: #c1d3f1;
+}
+
+ion-card{
+    --background: #d1f1f5;
+    --color: rgb(65, 63, 63);
+  }
+
+ion-tab-button {
+    --background: #eff7f8;
+    --color: #0fdd98 ;
+}
+
+ion-tab-bar {
+    --color : rgb(172, 169, 169);
+}
+
+io-card-title {
+    --color: #09dcf8;
+}
+
+ion-slides {
+    height: 450px;
+    width: 250px;
+}
+
+ion-responsive {
+    height: 450px;
+    width: 250px;
+}
+
