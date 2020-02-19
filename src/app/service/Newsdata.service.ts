@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Newsdata } from '../model/newsdata';
 
 @Injectable ({
     providedIn: 'root'
 })
 export class NewsdataService {
     data: any;
-    newsdata: any;
     constructor(private http: HttpClient) { }
 
-    getNewsdata(): Observable<any> {
-        console.log('getNewsdata');
-        return this.http.get('assets/data/newsdata.json').pipe(
-            map(results => results['newsdata.json'])
+    getData(): Observable<any> {
+        console.log('getData');
+        return this.http.get('http://127.0.0.1:8000/api/news').pipe(
+            map(results => results['data.json'])
         );
     }
 }

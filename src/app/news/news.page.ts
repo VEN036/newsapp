@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Response } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/Rx';
@@ -29,12 +29,12 @@ export class NewsPage {
   }
 
   getData() {
-    this.http.get('assets/data/newsdata.json').map((res: Response) => res.json()).subscribe(res => {
+    this.http.get('http://127.0.0.1:8000/api/news').map((res: Response) => res.json()).subscribe(res => {
           this.data = res.data;
           console.log(this.data);
         },
-        (err) => {
+        /*(err) => {
           alert('failed loading json data');
-        });
+        }*/);
   }
 }
