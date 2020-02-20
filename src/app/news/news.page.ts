@@ -1,40 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
-import { Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from "rxjs/Observable";
+import { HttpClient } from "@angular/common/http";
+import { Http } from "@angular/http";
 import 'rxjs/Rx';
+import * as _ from 'lodash';
+
+interface News {
+    image: string;
+    headline: string;
+    content: string;
+}
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.page.html',
   styleUrls: ['./news.page.scss'],
 })
-export class NewsPage {
-  data: any;
-  newsdata: any;
+export class NewsPage implements OnInit{
 
-
+// Ionic Slide Left and Right Operations
   slideOpts = {
     initialSlide: 1,
     speed: 400
   };
 
-  constructor(public http: HttpClient) { }
+  news$: Observable<News[]>;
+
+  constructor(private http: HttpClient ) { }
 
   ngOnInit() {
-    this.getData();
-  }
-
-  getData() {
-    this.http.get('http://127.0.0.1:8000/api/news').map((res: Response) => res.json()).subscribe(res => {
-          this.data = res.data;
-          console.log(this.data);
-        },
-        /*(err) => {
-          alert('failed loading json data');
-        }*/);
+   this.news$ = this.http
+          .get<News[]>("/assets/data/newsdata.json")
+          .map(data =>_.values(data))
+          .do(console.log); 
   }
 }

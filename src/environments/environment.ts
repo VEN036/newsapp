@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl:'http://127.0.0.1:8000/api/news',
-  apikey:'base64:TuS95Ygt0N5dbtFzYDHVvFwpB1Wr1EyK3OILR+RDi2c='
+  apiKey:'base64:TuS95Ygt0N5dbtFzYDHVvFwpB1Wr1EyK3OILR+RDi2c='
 };
 
 /*

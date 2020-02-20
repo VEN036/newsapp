@@ -1,7 +1,10 @@
+<ion-card-header>
+  <ion-card-subtitle>Welcome to our News App</ion-card-subtitle>
+</ion-card-header>
+
 <ion-slides pager="true" [options]="slideOpts">
-
 <ion-slide>
-<ion-card *ngFor="let news of newsdata">
+<ion-card *ngFor="let news of news">
   <img [src]="news.image">
 <ion-card-content>
   <ion-card-header>
@@ -15,7 +18,7 @@
 </ion-slide>
 
 <ion-slide>
-<ion-card *ngFor="let news of newsdata">
+<ion-card *ngFor="let news of news">
   <img [src]="news.image">
 <ion-card-content>
   <ion-card-header>
@@ -29,7 +32,7 @@
 </ion-slide>
 
 <ion-slide>
-<ion-card *ngFor="let news of newsdata">
+<ion-card *ngFor="let news of news">
   <img [src]="news.image">
 <ion-card-content>
   <ion-card-header>

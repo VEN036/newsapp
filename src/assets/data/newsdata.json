@@ -2,17 +2,17 @@
 "newsdata": [
     {
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRjGnjvamAkkJzsSulRQEJ6TfStGHkIutOfyo3-8oRQZB_-pIOk",
-      "hedline": "Headline1",
+      "headline": "Headline1",
       "content": "Headline1 contents here"
     },
     {
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRjGnjvamAkkJzsSulRQEJ6TfStGHkIutOfyo3-8oRQZB_-pIOk",
-      "hedline": "Headline2",
+      "headline": "Headline2",
       "content": "Headline 2 contents here"
     },
     {
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRjGnjvamAkkJzsSulRQEJ6TfStGHkIutOfyo3-8oRQZB_-pIOk",
-      "hedline": "Headline3",
+      "headline": "Headline3",
       "content": "Headline 3 contents here"
     }
 ]
