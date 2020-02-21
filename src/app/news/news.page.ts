@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs";
 import { NewsdataService } from '../service/Newsdata.service';
 
 @Component({
@@ -8,19 +7,21 @@ import { NewsdataService } from '../service/Newsdata.service';
   styleUrls: ['./news.page.scss'],
 })
 export class NewsPage implements OnInit {
-  private news = [];
+
+  news = [];
+
 // Ionic Slide Left and Right Operations
   slideOpts = {
     initialSlide: 1,
     speed: 400
   };
 
-  constructor(private newdataService: NewsdataService) { 
-    this.newdataService = newdataService;
-  }
+  constructor(private newsdataService: NewsdataService) {}
 
   ngOnInit() {
-    this.newdataService.getNews()
-    .subscribe(data => this.news.push(data.news));
+    this.newsdataService.sendGetRequest().subscribe((data:any[])=> {
+      console.log(data);
+      this.news = data;
+    })
   }
 }
