@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs/Observable";
-import { HttpClient } from "@angular/common/http";
-import 'rxjs/Rx';
+import { Observable } from "rxjs";
+import { NewsdataService } from '../service/Newsdata.service';
 
 @Component({
   selector: 'app-news',
@@ -9,25 +8,19 @@ import 'rxjs/Rx';
   styleUrls: ['./news.page.scss'],
 })
 export class NewsPage implements OnInit {
-  public news: any;
-
+  private news = [];
 // Ionic Slide Left and Right Operations
   slideOpts = {
     initialSlide: 1,
     speed: 400
   };
 
-  constructor(public httpClient: HttpClient) { }
-
-  getData() {
-    let url = '/assets/data/newsdata.json';
-    let data:Observable<any> = this.httpClient.get(url);
-    data.subscribe(result => {
-      this.news = result;
-    console.log(result);
-    }); 
+  constructor(private newdataService: NewsdataService) { 
+    this.newdataService = newdataService;
   }
 
-  ngOnInit() { }
-
+  ngOnInit() {
+    this.newdataService.getNews()
+    .subscribe(data => this.news.push(data.news));
+  }
 }

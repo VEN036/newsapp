@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/toPromise';
+import {Observable} from "rxjs";
+import 'rxjs/Rx';
+import 'rxjs/add/operator/catch';
+import { Newsdata } from '../model/newsdata';
 
-@Injectable ({
-    providedIn: 'root'
-})
+@Injectable ()
 export class NewsdataService {
 
-    API_URL = 'http://127.0.0.1:8000/api/news';
+    constructor(private http: Http, private newsdata: Newsdata) { }
 
-    API_KEY = 'base64:TuS95Ygt0N5dbtFzYDHVvFwpB1Wr1EyK3OILR+RDi2c=';
-
-    constructor(private httpclient: HttpClient) { }
-
-    getNews() {
-        return this.httpclient.get(`http://127.0`);
-    }
-
+    public getNews() :Observable<Newsdata> {
+        return this.http.get('assets/data/newsdata.json')
+        .map((response: Response) => response.json());
+      }
 }
 
