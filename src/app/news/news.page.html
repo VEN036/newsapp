@@ -1,50 +1,49 @@
 <ion-card-header>
   <ion-card-subtitle>Welcome to our News App</ion-card-subtitle>
 </ion-card-header>
-
 <ion-slides pager="true" [options]="slideOpts">
-<ion-slide>
-<ion-card *ngFor="let news of news">
-  <img [src]="news.image">
+<ion-slide *ngFor="let item of data">
+<ion-card>
+  <img [src]="item.image">
 <ion-card-content>
-  <ion-card-header>
+  <ion-card-header >
     <ion-card-title>
-      <h3> {{ news.headline }} </h3>
+      <h3> {{ item.headline }} </h3>
     </ion-card-title>
   </ion-card-header>
-    <p> {{ news.content }} </p>
+    <p> {{ item.content }} </p>
+  </ion-card-content>
+</ion-card>
+</ion-slide>
+
+<!--
+<ion-slide *ngFor="let item of data">
+<ion-card>
+  <img [src]="item.image">
+<ion-card-content>
+  <ion-card-header>
+    <ion-card-title >
+      <h3> {{item.name }} </h3>
+    </ion-card-title>
+  </ion-card-header>
+    <p> {{ item.company }} </p>
   </ion-card-content>
 </ion-card>
 </ion-slide>
 
 <ion-slide>
-<ion-card *ngFor="let news of news">
-  <img [src]="news.image">
+<ion-card>
+  <img [src]="item.image">
 <ion-card-content>
   <ion-card-header>
     <ion-card-title>
-      <h3> {{ news.headline }} </h3>
+      <h3> {{ item.name }} </h3>
     </ion-card-title>
   </ion-card-header>
-    <p> {{ news.content }} </p>
+    <p> {{ item.company }} </p>
   </ion-card-content>
 </ion-card>
-</ion-slide>
-
-<ion-slide>
-<ion-card *ngFor="let news of news">
-  <img [src]="news.image">
-<ion-card-content>
-  <ion-card-header>
-    <ion-card-title>
-      <h3> {{ news.headline }} </h3>
-    </ion-card-title>
-  </ion-card-header>
-    <p> {{ news.content }} </p>
-  </ion-card-content>
-</ion-card>
-</ion-slide>
-
+</ion-slide>-->
 </ion-slides>
 
 <ion-tabs>

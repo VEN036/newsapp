@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsdataService } from '../service/Newsdata.service';
 
 @Component({
   selector: 'app-news',
@@ -8,7 +7,7 @@ import { NewsdataService } from '../service/Newsdata.service';
 })
 export class NewsPage implements OnInit {
 
-  news = [];
+  data: any;
 
 // Ionic Slide Left and Right Operations
   slideOpts = {
@@ -16,12 +15,12 @@ export class NewsPage implements OnInit {
     speed: 400
   };
 
-  constructor(private newsdataService: NewsdataService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.newsdataService.sendGetRequest().subscribe((data:any[])=> {
-      console.log(data);
-      this.news = data;
-    })
+    fetch('./assets/data/data.json').then(res => res.json())
+    .then(json => {
+      this.data = json;
+    });
   }
 }

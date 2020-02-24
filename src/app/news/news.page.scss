@@ -21,14 +21,15 @@ ion-button {
     --color: #383a3e;
 }
 
-ion-searchbar {
-    --color: #c1d3f1;
-}
-
 ion-card{
     --background: #d1f1f5;
     --color: rgb(65, 63, 63);
-  }
+}
+
+ion-card {
+    height: 400px;
+    width: 841px;
+}
 
 ion-tab-button {
     --background: #eff7f8;
@@ -44,12 +45,18 @@ io-card-title {
 }
 
 ion-slides {
-    height: 450px;
-    width: 250px;
+    height: 500px;
+    width: 400px;
 }
 
+ion-slide {
+    height: 500px;
+    width: 400px;
+}
+
+
 ion-responsive {
-    height: 450px;
+    height: 500px;
     width: 250px;
 }
 
