@@ -24,3 +24,31 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-slides {
+    .hide {
+        display: block !important; // override "display: none"
+    }
+    .swiper-pagination-bullet {
+         background-color: transparent;
+         // box-shadow: 0px 0px 2px #000000;
+         opacity: 1;
+    }
+}
+
+ion-card{
+    width:100%;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    ion-card-content{
+        padding: 0 !important; 
+    }
+}
+
+.swiper-wrapper {
+    padding: 0 !important; 
+}
+
+
+
+  

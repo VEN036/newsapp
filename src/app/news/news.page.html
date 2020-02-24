@@ -1,10 +1,7 @@
-<ion-card-header>
-  <ion-card-subtitle>Welcome to our News App</ion-card-subtitle>
-</ion-card-header>
 <ion-slides pager="true" [options]="slideOpts">
 <ion-slide *ngFor="let item of data">
-<ion-card>
-  <img [src]="item.image">
+<ion-card class="ion-no-margin">
+  <ion-img [src]="item.image"></ion-img>
 <ion-card-content>
   <ion-card-header >
     <ion-card-title>
