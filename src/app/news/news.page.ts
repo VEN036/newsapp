@@ -33,7 +33,7 @@ export class NewsPage  {
   };
 
   loading: any;
-  data: any = [];
+  data: any;
   error: string;
 
   constructor( private http: HttpClient, public loadingController: LoadingController ) { 
@@ -68,7 +68,7 @@ export class NewsPage  {
   }
 
   private prepareDataRequest(): Observable<object> {
-    const dataUrl = 'http://127.0.0.1:8000/api/news/';
+    const dataUrl = 'https://madras-daily.herokuapp.com/api/news';
     return this.http.get(dataUrl);
   }
 

@@ -1,14 +1,17 @@
-<ion-slides pager="true" [options]="slideOpts">  
-<ion-slide *ngFor="let item of data " >
+<ion-slides pager="true" [options]="slideOpts">
+<p> News Data Will be presented here... </p>
+<p *ngIf="!error;else errorContent">{{ data ? data : '_' }} </p>  
+<ng-template #errorContent><p><span style="color: red;">{{error}}</span></p></ng-template>
+<ion-slide *ngFor="let item of data">
 <ion-card class="ion-no-margin">
-  <ion-img [src]="item.news_image"></ion-img>
+  <ion-img [src]="item.news_pics"></ion-img>
 <ion-card-content>
   <ion-card-header >
     <ion-card-title>
-      <h3> {{ item.title }} </h3>
+      <h3> {{ item.heading }} </h3>
     </ion-card-title>
   </ion-card-header>
-    <p> {{ item.body }} </p>
+    <p> {{ item.news_content }} </p>
   </ion-card-content>
 </ion-card>
 </ion-slide>
