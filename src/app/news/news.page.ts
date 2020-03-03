@@ -31,7 +31,7 @@ export class NewsPage  {
     }
   };
 
-  data: any;
+  public data: Array<any> = [];
   
   constructor( private http: Http) { 
     this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {

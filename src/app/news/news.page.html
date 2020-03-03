@@ -1,5 +1,5 @@
 <ion-slides pager="true" [options]="slideOpts">
-<ion-slide *ngFor="let data of data?.docs">
+<ion-slide *ngFor="let data of data.data">
 <ion-card class="ion-no-margin">
   <ion-img [src]="data.news_pics"></ion-img>
 <ion-card-content>
@@ -44,7 +44,7 @@
 </ion-slide>-->
 
 
-<ion-tabs>
+<!--<ion-tabs>
   <ion-tab-bar slot="bottom">
 
     <ion-tab-button tab="paper">
@@ -63,6 +63,6 @@
     </ion-tab-button>
 
   </ion-tab-bar>
-</ion-tabs>
+</ion-tabs>-->
 
 <router-outlet main></router-outlet>
