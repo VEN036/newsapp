@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'app-news',
@@ -32,44 +31,15 @@ export class NewsPage  {
     }
   };
 
-  loading: any;
   data: any;
-  error: string;
-
-  constructor( private http: HttpClient, public loadingController: LoadingController ) { 
-    this.data = '';
-    this.error = '';
-  }
-
-// Ion loading and present view
-  async ionViewWillEnter() {
-    await this.presentLoading();
-    this.prepareDataRequest()
-      .pipe(
-        finalize(async () => {
-          await this.loading.dismiss();
-        })
-      )
-      .subscribe(
-        data => {
-          this.data = JSON.stringify(data);
-        },
-        err => {
-          this.error = `An error occurred, the data could not be retrieved: Status: ${err.status}, Message: ${err.statusText}`;
-        }
-      );
-  }
-
-  async presentLoading() {                                                                                                                
-    this.loading = await this.loadingController.create({
-      message: 'Loading...'
+  
+  constructor( private http: Http) { 
+    this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {
+      this.data = data;
+      console.log(this.data);
+    },
+    err => {
+      console.log("Oops!")
     });
-    await this.loading.present();
   }
-
-  private prepareDataRequest(): Observable<object> {
-    const dataUrl = 'https://madras-daily.herokuapp.com/api/news';
-    return this.http.get(dataUrl);
-  }
-
 }
