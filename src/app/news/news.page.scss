@@ -1,3 +1,10 @@
+@font-face {
+    font-family: notoSansTamil;
+    src: url('../../assets/font/NotoSansTamil-Regular.ttf');
+
+  }
+
+
 page-home {
     @media (max-width: 576px) {
         ion-card-content {
@@ -36,7 +43,34 @@ ion-tab-bar {
 }
 
 ion-card-title {
-    --color: #09dcf8;
+    text-align: left;
+    width: 90%;
+    margin: 12px 5% 6px;
+    font-size: 1rem;
+    color: #161616;
+    font-family: NotoSansTamil-Regular;
+    opacity: .9;
+    line-height: 1.3rem;
+}
+
+.content {
+    text-align: left;
+    Width: 90%;
+    margin: 0 5%;
+    line-height: 1.35rem;
+    font-size: .9rem;
+    color: #585858;
+    font-family: NotoSansTamil-Regular;
+    font-weight: 300;
+    opacity: .8;
+}
+
+.newstype {
+    text-align: left;
+    font-size: .7rem;
+    color: #c7c7c7;
+    font-weight: 400;
+    font-family: Roboto;
 }
 
 ion-slides {
