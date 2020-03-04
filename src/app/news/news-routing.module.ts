@@ -8,27 +8,27 @@ const routes: Routes = [
     component: NewsPage,
     children: [
       {
-        path: 'discover',
+        path: 'news',
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../discover/discover.module').then(m => m.DiscoverModule)
+            loadChildren: () => 
+              import('../news/news.module').then(m => m.NewsPageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/news/discover',
+        redirectTo:'/news/news',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: 'news/discover',
+    redirectTo: '/news/news',
     pathMatch: 'full'
-  }
+  }        
 ];
 
 @NgModule({
