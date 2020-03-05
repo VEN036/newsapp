@@ -6,6 +6,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./news/news.module').then( m => m.NewsPageModule )
   },
+
   //{
   //   path: '',
   //  loadChildren: () => import('./news/news.module').then( m => m.NewsPageModule)

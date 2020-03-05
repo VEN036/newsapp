@@ -7,18 +7,18 @@ angular.module('starter.controllers', [])
 
     .controller('NewsCtrl', function($scope, $http, $ionicModal) {
        $scope.News = [
-            { id: 1, title: 'something', category: 'something', body: 'something' },
-            { id: 2, title: 'something', category: 'something', body: 'something' },
-            { id: 3, title: 'something', category: 'something', body: 'something' },
-            { id: 4, title: 'something', category: 'something', body: 'something' },
-            { id: 5, title: 'something', category: 'something', body: 'something' }
+            { id: 1, news_pics: 'url', heading: 'something', category: 'something', body: 'something' },
+            { id: 2, news_pics: 'url', heading: 'something', category: 'something', body: 'something' },
+            { id: 3, news_pics: 'url', heading: 'something', category: 'something', body: 'something' },
+            { id: 4, news_pics: 'url', heading: 'something', category: 'something', body: 'something' },
+            { id: 5, news_pics: 'url', heading: 'something', category: 'something', body: 'something' }
        ]; 
         
         $scope.News = [];
         limit = 5;
         offset = 0;
 
-        $http.get('http://127.0.0.1:8000/api/news' + limit +'%20offset%20' + offset + '&format=json&diagnostics=true&callback=').success(function(data) {
+        $http.get('https://madras-daily.herokuapp.com/api/news' + limit +'%20offset%20' + offset + '&format=json&diagnostics=true&callback=').success(function(data) {
             $scope.News = data.query.results.item;
             console.log(data.query.results.item);
         })
@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
         $scope.loadMore = function() {
             offset = offset + 5;
 
-            $http.get('http://127.0.0.1:8000/api/news' + limit +'%20offset%20' + offset + '&format=json&diagnostics=true&callback=').success(function(data) {
+            $http.get('https://madras-daily.herokuapp.com/api/news' + limit +'%20offset%20' + offset + '&format=json&diagnostics=true&callback=').success(function(data) {
                 $scope.News = $scope.News.concat(data.query.results.item);
                 console.log(data.query.results.item);
             })
@@ -64,11 +64,11 @@ angular.module('starter.controllers', [])
 
     .controller('NewsCtrl', function($scope, $stateParams, $rootScope, $http, $ionicPopup, $timeout) {
         // $scope.News = [
-        //    { id: 1, title: 'something', category: 'something', body: 'something' },
-        //    { id: 2, title: 'something', category: 'something', body: 'something' },
-        //    { id: 3, title: 'something', category: 'something', body: 'something' },
-        //    { id: 4, title: 'something', category: 'something', body: 'something' },
-        //    { id: 5, title: 'something', category: 'something', body: 'something' }
+        //    { id: 1, news_pics: 'url', title: 'something', category: 'something', body: 'something' },
+        //    { id: 2, news_pics: 'url', title: 'something', category: 'something', body: 'something' },
+        //    { id: 3, news_pics: 'url', title: 'something', category: 'something', body: 'something' },
+        //    { id: 4, news_pics: 'url', title: 'something', category: 'something', body: 'something' },
+        //    { id: 5, news_pics: 'url', title: 'something', category: 'something', body: 'something' }
         // ];
 
         // console.log($rootScope.currentUser);
@@ -116,7 +116,7 @@ angular.module('starter.controllers', [])
         $scope.init = function() {
                       $scope.lastpage = 1;
                       $http({
-                          url: 'http://127.0.0.1:8000/api/news',
+                          url: 'https://madras-daily.herokuapp.com/api/news',
                           method: "GET",
                           params: {page: $scope.lastpage}
                       }).success(function(news, status, headers, config) {
@@ -134,7 +134,7 @@ angular.module('starter.controllers', [])
 
                 $scope.lastpage +=1;
                 $http({
-                    url: 'http://127.0.0.1:8000/api/news',
+                    url: 'https://madras-daily.herokuapp.com/api/news',
                     method: "GET",
                     params: {limit: limit, page: $scope.lastpage}
                 }).success(function (news, status, headers, config) {
@@ -157,7 +157,7 @@ angular.module('starter.controllers', [])
         $scope.addNews = function(news) {
             console.log("add news: ", news);
 
-                $http.post('http://127.0.0.1:8000/api/news', {
+                $http.post('https://madras-daily.herokuapp.com/api/news', {
                     body: news
                 }).success(function(response) {
                     // console.log($scope.news);
@@ -174,7 +174,7 @@ angular.module('starter.controllers', [])
 
         $scope.updateNews = function(news){
             console.log(news);
-            $http.put('http://127.0.0.1:8000/api/news' + news.news_id, {
+            $http.put('https://madras-daily.herokuapp.com/api/news' + news.news_id, {
                   body: news.news
               }).success(function(response) {
                   // alert("News Updated Successfully");
@@ -186,7 +186,7 @@ angular.module('starter.controllers', [])
           $scope.deleteNews = function(index, newsId){
             console.log(index, newsId);
       
-              $http.delete('http://127.0.0.1:8000/api/news' + newsId)
+              $http.delete('https://madras-daily.herokuapp.com/api/news' + newsId)
                   .success(function() {
                       $scope.news.splice(index, 1);
                   });;

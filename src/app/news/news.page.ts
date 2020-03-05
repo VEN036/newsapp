@@ -11,7 +11,6 @@ import 'rxjs/add/operator/map';
 export class NewsPage  {
 // Slide Operation Controller
   slideOpts = {
-    initialSlide: 0,
     speed: 400,
     effect: 'coverflow',
     slidesPerView: 1,
@@ -35,7 +34,6 @@ export class NewsPage  {
   constructor( private http: Http) { 
     this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {
       this.data = data;
-      console.log(this.data);
     },
     err => {
       console.log("Oops!")

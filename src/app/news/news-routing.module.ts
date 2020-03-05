@@ -13,20 +13,20 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => 
-              import('../news/news.module').then(m => m.NewsPageModule)
+              import('./news.module').then(m => m.NewsPageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo:'/news/news',
+        redirectTo:'/news',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/news/news',
+    redirectTo: '/news',
     pathMatch: 'full'
   }        
 ];
