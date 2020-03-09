@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 export class NewsPage  {
 // Slide Operation Controller
   slideOpts = {
-    speed: 400,
+    speed: 500,
     effect: 'coverflow',
     slidesPerView: 1,
     slideOffsetBefore: 10,
