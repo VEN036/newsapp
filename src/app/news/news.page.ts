@@ -30,10 +30,11 @@ export class NewsPage  {
   };
 
   public data: Array<any> = [];
+  //data: any[];
   
   constructor( private http: Http) { 
     this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {
-      this.data = data;
+      this.data = data.data;
     },
     err => {
       console.log("Oops!")

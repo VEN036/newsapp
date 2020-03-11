@@ -3,7 +3,7 @@
 </head>
 <div class=screen>
 <ion-slides pager="false" [options]="slideOpts">
-  <ion-slide *ngFor="let data of data.data">
+  <ion-slide *ngFor="let data of data">
   <ion-card class="ion-no-margin">
    <!-- <ion-img [src]="item.news_pics"></ion-img> -->
     <div class=image [style.backgroundImage]="'url(' + data.news_pics + ')'"></div>
