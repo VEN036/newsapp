@@ -11,9 +11,10 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment.prod';
 import * as firebase from 'firebase';
-
 firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
@@ -31,8 +32,10 @@ firebase.initializeApp(environment.firebaseConfig);
     HttpModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    AngularFireModule,
-    AngularFireAuthModule
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
   providers: [
     StatusBar,
