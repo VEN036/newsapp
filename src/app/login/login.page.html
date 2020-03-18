@@ -28,22 +28,18 @@
   </form>
 </ion-content>
 
-<!--Google SignIn-->
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Google SignIn</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <form>
     <ion-row>
       <ion-col>
         <ion-button type="submit" color="danger" (click)="authService.GoogleAuth()" expand="block">
           Login With Google
+        </ion-button>
+        <ion-button type="submit" color="primary" (click)="authService.FacebookAuth()" expand="block">
+          Login With Facebook
+        </ion-button>
+        <ion-button type="submit" color="primary" (click)="authService.TwitterAuth()" expand="block">
+          Login With Twitter
         </ion-button>
       </ion-col>
     </ion-row>

@@ -5,7 +5,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./news/news.module').then( m => m.NewsPageModule )
-  },  {
+  },
+  {
     path: 'registration',
     loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
   },
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   }
 
 

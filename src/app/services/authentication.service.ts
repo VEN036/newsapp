@@ -74,6 +74,16 @@ export class AuthenticationService {
     return this.AuthLogin(new auth.GoogleAuthProvider());
   }
 
+  // Sign in with Facebook
+  FacebookAuth() {
+    return this.AuthLogin(new auth.FacebookAuthProvider());
+  }
+
+  // Sign in with Twitter
+  TwitterAuth() {
+    return this.AuthLogin(new auth.TwitterAuthProvider());
+  }
+
   // Auth providers
   AuthLogin(provider) {
     return this.ngFireAuth.auth.signInWithPopup(provider)
