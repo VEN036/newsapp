@@ -16,14 +16,15 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment.prod';
 import * as firebase from 'firebase';
+
 firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   entryComponents: [
-    AppComponent, 
+    AppComponent 
   ],
   imports: [
     BrowserModule,

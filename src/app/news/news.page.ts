@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { NavController, ModalController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-news',
@@ -29,15 +31,46 @@ export class NewsPage  {
     }
   };
 
+  // Toast Controller
+  /*presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'News Update Successfully',
+      duration: 3000,
+      position: 'top'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    })
+
+    toast.present();
+  }*/
+
   public data: Array<any> = [];
-  //data: any[];
+
+  tabBarElement: any;
   
-  constructor( private http: Http) { 
+  constructor( 
+    private http: Http, 
+    public navCtrl: NavController,
+    private toastCtrl: ToastController,
+    public modalCtrl: ModalController 
+    ) { 
     this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {
       this.data = data.data;
     },
     err => {
       console.log("Oops!")
     });
+
+    this.tabBarElement = document.querySelector('#tabs ion-tabbar-section');
+  }
+
+  onPageDidEnter() {
+    this.tabBarElement.style.display = 'none';
+  }
+
+  onPageWillLeave() {
+    this.tabBarElement.style.display = 'block';
   }
 }

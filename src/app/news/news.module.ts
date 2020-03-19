@@ -7,6 +7,7 @@ import { NewsPage } from './news.page';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +17,12 @@ import { HttpModule } from '@angular/http';
     IonicModule,
     NewsPageRoutingModule
   ],
-  declarations: [NewsPage]
+  declarations: [
+    NewsPage
+  ],
+  entryComponents: [
+    NewsPage
+  ]
 })
 export class NewsPageModule {}
 
