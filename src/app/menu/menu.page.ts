@@ -1,31 +1,36 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav } from 'ionic-angular';
-import { NewsPage } from '../news/news.page';
-import { LoginPage } from '../login/login.page';
-import { RegistrationPage } from '../registration/registration.page';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterEvent } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
   styleUrls: ['./menu.page.scss'],
 })
-export class MenuPage {
-  
-  @ViewChild('content', { static: false }) 
-  nav: Nav
-  rootPage: any = 'NewsPage';
+export class MenuPage implements OnInit {
 
-  pages: Array<{ title: string, page: any }>
+  activePath = '';
 
-  constructor() { 
-    this.pages = [
-      { title: 'Login', page: LoginPage },
-      { title: 'Registration', page: RegistrationPage }
-    ];
+  pages = [
+    {
+      name: 'Login',
+      path: '/menu/login'
+    },
+    {
+      name: 'Registration',
+      path: '/menu/registration'
+    },
+    {
+      name: 'News',
+      path: '/menu/news'
+    }
+  ]
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: RouterEvent) => {
+      this.activePath = event.url
+    })
   }
 
-  openpage(page) {
-    this.nav.setRoot(page.component);
+  ngOnInit() {
   }
-
 }
