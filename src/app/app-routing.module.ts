@@ -23,8 +23,12 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
   {
-    path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'category',
+    loadChildren: () => import('./category/category.module').then( m => m.CategoryPageModule)
   }
 
   //{

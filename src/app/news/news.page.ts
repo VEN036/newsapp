@@ -58,7 +58,7 @@ export class NewsPage  {
     private http: Http, 
     //public navCtrl: NavController,
     private toastCtrl: ToastController,
-    //public modalCtrl: ModalController 
+    //public modalCtrl: ModalController,
     ) { 
     this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {
       this.data = data.data;
@@ -91,4 +91,5 @@ export class NewsPage  {
   //    }
   //  });
   //}
+
 }

@@ -16,7 +16,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment.prod';
 import * as firebase from 'firebase';
-
 firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
@@ -24,14 +23,14 @@ firebase.initializeApp(environment.firebaseConfig);
     AppComponent
   ],
   entryComponents: [
-    AppComponent 
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule, 
     HttpClientModule, 
-    HttpModule, 
+    HttpModule,
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

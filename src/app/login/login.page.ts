@@ -31,4 +31,8 @@ export class LoginPage implements OnInit {
       })
   }
 
+  //doLogin() {
+  //  this.navCtrl.setRoot('MenuPage')
+  //}
+
 }

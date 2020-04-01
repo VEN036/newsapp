@@ -9,6 +9,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
   providedIn: 'root'
 })
 export class AuthenticationService {
+  [x: string]: any;
   userData: any;
 
   constructor(

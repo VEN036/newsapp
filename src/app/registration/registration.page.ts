@@ -12,7 +12,8 @@ export class RegistrationPage implements OnInit {
   constructor(
     public authService: AuthenticationService,
     public router: Router
-  ) { }
+  ) { 
+  }
 
   ngOnInit() { }
 
@@ -25,4 +26,8 @@ export class RegistrationPage implements OnInit {
       window.alert(error.message)
     })
   }
+
+  //doRegistration() {
+  //  this.navCtrl.setRoot('MenuPage');
+  //}
 }
