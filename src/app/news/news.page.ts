@@ -33,12 +33,16 @@ export class NewsPage  {
 
   pages = [
     {
+      title: 'Category Page',
+      url: 'news/news/category'
+    },
+    {
       title: 'Login Page',
-      url: 'news/login'
+      url: 'news/news/login'
     },
     {
       title: 'Registration Page',
-      url: 'news/registration'
+      url: 'news/news/registration'
     }
   ];
 

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NewsPage } from './news.page';
+import { LoginPage } from '../login/login.page';
+import { RegistrationPage } from '../registration/registration.page';
 
 const routes: Routes = [
   {
@@ -14,6 +16,36 @@ const routes: Routes = [
             path: '',
             loadChildren: () => 
               import('./news.module').then(m => m.NewsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'category',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../registration/registration.module').then(m => m.RegistrationPageModule)
+          }
+        ]
+      },
+      {
+        path: 'login',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../login/login.module').then(m => m.LoginPageModule)
+          }
+        ]
+      },
+      {
+        path: 'registration',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../registration/registration.module').then(m => m.RegistrationPageModule)
           }
         ]
       },
