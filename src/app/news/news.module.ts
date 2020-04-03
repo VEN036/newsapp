@@ -7,7 +7,32 @@ import { NewsPageRoutingModule } from './news-routing.module';
 import { NewsPage } from './news.page';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { Routes } from '@angular/router';
 
+const routes: Routes = [
+  {
+    path: 'news',
+    component: NewsPage,
+    children: [
+      {
+        path: 'category',
+        loadChildren: () => import('../category/category.module').then( m => m.CategoryPageModule )
+      },
+      {
+        path: 'login',
+        loadChildren: () => import('../login/login.module').then( m => m.LoginPageModule )
+      },
+      {
+        path: 'registration',
+        loadChildren: () => import('../registration/registration.module').then( m => m.RegistrationPageModule )
+      }
+    ]
+  },
+  {
+    path: '',
+    redirectTo: '/news/news'
+  }
+];
 
 @NgModule({
   imports: [

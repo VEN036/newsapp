@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-//import { NavController, ModalController, IonTabs } from '@ionic/angular';
-//import { ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { ToastController } from '@ionic/angular';
-import { Container } from '@angular/compiler/src/i18n/i18n_ast';
+import { Router, RouterEvent } from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -13,7 +10,6 @@ import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 })
 
 export class NewsPage  {
-// Slide Operation Controller
   slideOpts = {
     speed: 500,
     effect: 'coverflow',
@@ -33,33 +29,23 @@ export class NewsPage  {
     }
   };
 
-  // Toast Controller
-  /*presentToast() {
-    let toast = this.toastCtrl.create({
-      message: 'News Update Successfully',
-      duration: 3000,
-      position: 'top'
-    });
-
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    })
-
-    toast.present();
-  }*/
- 
-  //@ViewChild(IonTabs, { static: true }) ionTabs: IonTabs;
-
   public data: Array<any> = [];
 
-  //tabBarElement: any;
+  pages = [
+    {
+      title: 'Login Page',
+      url: 'news/login'
+    },
+    {
+      title: 'Registration Page',
+      url: 'news/registration'
+    }
+  ];
+
+  selectedPath = '';
   
-  constructor( 
-    private http: Http, 
-    //public navCtrl: NavController,
-    private toastCtrl: ToastController,
-    //public modalCtrl: ModalController,
-    ) { 
+  constructor( private http: Http, private router: Router) 
+  { 
     this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {
       this.data = data.data;
     },
@@ -67,29 +53,8 @@ export class NewsPage  {
       console.log("Oops!")
     });
 
-    //this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+    this.router.events.subscribe((event: RouterEvent) => {
+      this.selectedPath = event.url;
+    });
   }
-
-  //onPageDidEnter() {
-  //  this.tabBarElement.style.display = 'none';
-  //}
-
-  //onPageWillLeave() {
-  //  this.tabBarElement.style.display = 'block';
-  //}
-
-  //ngAfterViewInit() {
-  //  this.overrideTabContainer();
-  //}
-
-  //private overrideTabContainer() {
-  //  setTimeout(() => {
-  //    const routerOutlet = (this.ionTabs.outlet as any).nativeE1 as HTMLElement;
-  //    const container = routerOutlet.querySelector('ion-content');
-  //    if (container) {
-  //      container.style.setProperty('--padding-bottom', '90px')
-  //    }
-  //  });
-  //}
-
 }

@@ -18,15 +18,6 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tabs',
-        children: [
-          {
-            path: '',
-            loadChildren: '../tabs/tabs.module#TabsPageModule'
-          }
-        ]
-      },
-      {
         path: '',
         redirectTo:'/news',
         pathMatch: 'full'

@@ -140,4 +140,8 @@
     line-height: 1.5rem;
     text-align: left;
   }
+
+  .active-item {
+    border-left: 8px solid var(--ion-color-primary);
+  }
   

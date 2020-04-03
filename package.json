@@ -63,6 +63,7 @@
     "formsy-react": "^2.0.2",
     "gradle": "^1.0.9",
     "ionic-angular": "^3.9.9",
+    "ionic2-super-tabs": "^5.2.0",
     "ionicons": "^4.6.3",
     "lodash": "^4.17.15",
     "mobiscroll": "^3.0.0-beta6",

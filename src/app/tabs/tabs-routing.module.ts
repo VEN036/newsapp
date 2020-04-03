@@ -12,7 +12,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../category/category.module#CategoryPageModule'
+            loadChildren: () => import('../category/category.module').then( m => m.CategoryPageModule )
           }
         ]
       },
@@ -21,7 +21,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../login/login.module#LoginPageModule'
+            loadChildren: () => import('../login/login.module').then( m => m.LoginPageModule )
           }
         ]
       },
@@ -30,7 +30,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../registration/registration.module#RegistrationPageModule'
+            loadChildren: () => import('../registration/registration.module').then( m => m.RegistrationPageModule )
           }
         ]
       },
