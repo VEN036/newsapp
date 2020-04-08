@@ -34,21 +34,25 @@ export class NewsPage  {
   pages = [
     {
       title: 'Category Page',
-      url: 'news/news/category'
+      url: 'news/category'
     },
     {
       title: 'Login Page',
-      url: 'news/news/login'
+      url: 'news/login'
     },
     {
       title: 'Registration Page',
-      url: 'news/news/registration'
+      url: 'news/registration'
+    },
+    {
+      title: 'About Page',
+      url: 'news/about'
     }
   ];
 
   selectedPath = '';
   
-  constructor( private http: Http, private router: Router) 
+  constructor( private http: Http, private router: Router ) 
   { 
     this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {
       this.data = data.data;
@@ -61,4 +65,5 @@ export class NewsPage  {
       this.selectedPath = event.url;
     });
   }
+
 }

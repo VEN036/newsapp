@@ -679,6 +679,147 @@ const findCheckedOption = (el, tagName) => {
 
 
 
+/***/ }),
+
+/***/ "./src/app/services/authentication.service.ts":
+/*!****************************************************!*\
+  !*** ./src/app/services/authentication.service.ts ***!
+  \****************************************************/
+/*! exports provided: AuthenticationService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthenticationService", function() { return AuthenticationService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+
+
+
+
+
+
+let AuthenticationService = class AuthenticationService {
+    constructor(afstore, ngFireAuth, router, ngZone) {
+        this.afstore = afstore;
+        this.ngFireAuth = ngFireAuth;
+        this.router = router;
+        this.ngZone = ngZone;
+        this.ngFireAuth.authState.subscribe(user => {
+            if (user) {
+                this.userData = user;
+                localStorage.setItem('user', JSON.stringify(this.userData));
+                JSON.parse(localStorage.getItem('user'));
+            }
+            else {
+                localStorage.setItem('user', null);
+                JSON.parse(localStorage.getItem('user'));
+            }
+        });
+    }
+    //Login in with email/password
+    SignIn(email, password) {
+        return this.ngFireAuth.auth.signInWithEmailAndPassword(email, password);
+    }
+    //Register user with email/password
+    RegisterUser(email, password) {
+        return this.ngFireAuth.auth.createUserWithEmailAndPassword(email, password);
+    }
+    // Email verification when new user register
+    SendVerificationMail() {
+        return this.ngFireAuth.auth.currentUser.sendEmailVerification()
+            .then(() => {
+            this.router.navigate(['verify-email']);
+        });
+    }
+    // Recover password
+    PasswordRecover(passwordResetEmail) {
+        return this.ngFireAuth.auth.sendPasswordResetEmail(passwordResetEmail)
+            .then(() => {
+            window.alert('Password reset email has been sent, please check your inbox.');
+        }).catch((error) => {
+            window.alert(error);
+        });
+    }
+    // Returns true when user is logged in
+    get isLoggedIn() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        return (user !== null && user.emailVerified !== false) ? true : false;
+    }
+    // Return true when user's email is verified
+    get isEmailVerified() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        return (user.emailVerified !== false) ? true : false;
+    }
+    // Sign in with Gmail
+    GoogleAuth() {
+        return this.AuthLogin(new firebase_app__WEBPACK_IMPORTED_MODULE_2__["auth"].GoogleAuthProvider());
+    }
+    // Sign in with Facebook
+    FacebookAuth() {
+        return this.AuthLogin(new firebase_app__WEBPACK_IMPORTED_MODULE_2__["auth"].FacebookAuthProvider());
+    }
+    // Sign in with Twitter
+    TwitterAuth() {
+        return this.AuthLogin(new firebase_app__WEBPACK_IMPORTED_MODULE_2__["auth"].TwitterAuthProvider());
+    }
+    // Auth providers
+    AuthLogin(provider) {
+        return this.ngFireAuth.auth.signInWithPopup(provider)
+            .then((result) => {
+            this.ngZone.run(() => {
+                this.router.navigate(['dashboard']);
+            });
+            this.SetUserData(result.user);
+        }).catch((error) => {
+            window.alert(error);
+        });
+    }
+    // Store user in localStorage
+    SetUserData(user) {
+        const userRef = this.afstore.doc('users/${user.uid}');
+        const userData = {
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+            emailVerified: user.emailVerified
+        };
+        return userRef.set(userData, {
+            merge: true
+        });
+    }
+    // Sign-out
+    SignOut() {
+        return this.ngFireAuth.auth.signOut().then(() => {
+            localStorage.removeItem('user');
+            this.router.navigate(['login']);
+        });
+    }
+};
+AuthenticationService.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"] },
+    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+];
+AuthenticationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"],
+        _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
+], AuthenticationService);
+
+
+
 /***/ })
 
 }]);

@@ -110,23 +110,16 @@
   </ion-fab-list>
 </ion-fab>-->
 
-<ion-tabs>
-  <ion-tab-bar slot="bottom" class="custom-fab">
-    <ion-tab-button tab="tabs">
-      <ion-icon name="grid"></ion-icon>
-      <ion-label>Tabs</ion-label>
-    </ion-tab-button>
-
-    <ion-tab-button tab="share">
-      <ion-icon name="share"></ion-icon>
-      <ion-label>Share</ion-label>
-    </ion-tab-button>
-
-    <ion-tab-button tab="bookmarks">
-      <ion-icon name="bookmarks"></ion-icon>
-      <ion-label>Bookmarks</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+<ion-tab-bar slot="bottom">
+  <ion-tab-button href="/tabs">
+    <ion-icon name="grid"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button href="/share">
+    <ion-icon name="share"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button href="/bookmark">
+    <ion-icon name="bookmark"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>
 
 <router-outlet main></router-outlet>

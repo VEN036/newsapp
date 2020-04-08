@@ -25,6 +25,18 @@ const routes: Routes = [
       {
         path: 'registration',
         loadChildren: () => import('../registration/registration.module').then( m => m.RegistrationPageModule )
+      },
+      {
+        path: 'about',
+        loadChildren: () => import('../about/about.module').then( m => m.AboutPageModule )
+      },
+      {
+        path: 'share',
+        loadChildren: () => import('../share/share.module').then( m => m.SharePageModule )
+      },
+      {
+        path: 'tabs',
+        loadChildren: () => import('../tabs/tabs.module').then( m => m.TabsPageModule )
       }
     ]
   },

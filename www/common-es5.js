@@ -1,3 +1,7 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1120,6 +1124,223 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
     /***/
 
+  },
+
+  /***/
+  "./src/app/services/authentication.service.ts":
+  /*!****************************************************!*\
+    !*** ./src/app/services/authentication.service.ts ***!
+    \****************************************************/
+
+  /*! exports provided: AuthenticationService */
+
+  /***/
+  function srcAppServicesAuthenticationServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AuthenticationService", function () {
+      return AuthenticationService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var firebase_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! firebase/app */
+    "./node_modules/firebase/app/dist/index.cjs.js");
+    /* harmony import */
+
+
+    var firebase_app__WEBPACK_IMPORTED_MODULE_2___default =
+    /*#__PURE__*/
+    __webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_2__);
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/fire/auth */
+    "./node_modules/@angular/fire/auth/es2015/index.js");
+    /* harmony import */
+
+
+    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/fire/firestore */
+    "./node_modules/@angular/fire/firestore/es2015/index.js");
+
+    var AuthenticationService =
+    /*#__PURE__*/
+    function () {
+      function AuthenticationService(afstore, ngFireAuth, router, ngZone) {
+        var _this = this;
+
+        _classCallCheck(this, AuthenticationService);
+
+        this.afstore = afstore;
+        this.ngFireAuth = ngFireAuth;
+        this.router = router;
+        this.ngZone = ngZone;
+        this.ngFireAuth.authState.subscribe(function (user) {
+          if (user) {
+            _this.userData = user;
+            localStorage.setItem('user', JSON.stringify(_this.userData));
+            JSON.parse(localStorage.getItem('user'));
+          } else {
+            localStorage.setItem('user', null);
+            JSON.parse(localStorage.getItem('user'));
+          }
+        });
+      } //Login in with email/password
+
+
+      _createClass(AuthenticationService, [{
+        key: "SignIn",
+        value: function SignIn(email, password) {
+          return this.ngFireAuth.auth.signInWithEmailAndPassword(email, password);
+        } //Register user with email/password
+
+      }, {
+        key: "RegisterUser",
+        value: function RegisterUser(email, password) {
+          return this.ngFireAuth.auth.createUserWithEmailAndPassword(email, password);
+        } // Email verification when new user register
+
+      }, {
+        key: "SendVerificationMail",
+        value: function SendVerificationMail() {
+          var _this2 = this;
+
+          return this.ngFireAuth.auth.currentUser.sendEmailVerification().then(function () {
+            _this2.router.navigate(['verify-email']);
+          });
+        } // Recover password
+
+      }, {
+        key: "PasswordRecover",
+        value: function PasswordRecover(passwordResetEmail) {
+          return this.ngFireAuth.auth.sendPasswordResetEmail(passwordResetEmail).then(function () {
+            window.alert('Password reset email has been sent, please check your inbox.');
+          }).catch(function (error) {
+            window.alert(error);
+          });
+        } // Returns true when user is logged in
+
+      }, {
+        key: "GoogleAuth",
+        // Sign in with Gmail
+        value: function GoogleAuth() {
+          return this.AuthLogin(new firebase_app__WEBPACK_IMPORTED_MODULE_2__["auth"].GoogleAuthProvider());
+        } // Sign in with Facebook
+
+      }, {
+        key: "FacebookAuth",
+        value: function FacebookAuth() {
+          return this.AuthLogin(new firebase_app__WEBPACK_IMPORTED_MODULE_2__["auth"].FacebookAuthProvider());
+        } // Sign in with Twitter
+
+      }, {
+        key: "TwitterAuth",
+        value: function TwitterAuth() {
+          return this.AuthLogin(new firebase_app__WEBPACK_IMPORTED_MODULE_2__["auth"].TwitterAuthProvider());
+        } // Auth providers
+
+      }, {
+        key: "AuthLogin",
+        value: function AuthLogin(provider) {
+          var _this3 = this;
+
+          return this.ngFireAuth.auth.signInWithPopup(provider).then(function (result) {
+            _this3.ngZone.run(function () {
+              _this3.router.navigate(['dashboard']);
+            });
+
+            _this3.SetUserData(result.user);
+          }).catch(function (error) {
+            window.alert(error);
+          });
+        } // Store user in localStorage
+
+      }, {
+        key: "SetUserData",
+        value: function SetUserData(user) {
+          var userRef = this.afstore.doc('users/${user.uid}');
+          var userData = {
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+            emailVerified: user.emailVerified
+          };
+          return userRef.set(userData, {
+            merge: true
+          });
+        } // Sign-out
+
+      }, {
+        key: "SignOut",
+        value: function SignOut() {
+          var _this4 = this;
+
+          return this.ngFireAuth.auth.signOut().then(function () {
+            localStorage.removeItem('user');
+
+            _this4.router.navigate(['login']);
+          });
+        }
+      }, {
+        key: "isLoggedIn",
+        get: function get() {
+          var user = JSON.parse(localStorage.getItem('user'));
+          return user !== null && user.emailVerified !== false ? true : false;
+        } // Return true when user's email is verified
+
+      }, {
+        key: "isEmailVerified",
+        get: function get() {
+          var user = JSON.parse(localStorage.getItem('user'));
+          return user.emailVerified !== false ? true : false;
+        }
+      }]);
+
+      return AuthenticationService;
+    }();
+
+    AuthenticationService.ctorParameters = function () {
+      return [{
+        type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"]
+      }, {
+        type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+      }, {
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]
+      }];
+    };
+
+    AuthenticationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])], AuthenticationService);
+    /***/
   }
 }]);
 //# sourceMappingURL=common-es5.js.map

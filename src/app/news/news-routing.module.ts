@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NewsPage } from './news.page';
-import { LoginPage } from '../login/login.page';
-import { RegistrationPage } from '../registration/registration.page';
 
 const routes: Routes = [
   {
@@ -13,39 +11,42 @@ const routes: Routes = [
         path: 'news',
         children: [
           {
-            path: '',
-            loadChildren: () => 
-              import('./news.module').then(m => m.NewsPageModule)
-          }
-        ]
-      },
-      {
-        path: 'category',
-        children: [
-          {
-            path: '',
+            path: 'category',
             loadChildren: () =>
-              import('../registration/registration.module').then(m => m.RegistrationPageModule)
-          }
-        ]
-      },
-      {
-        path: 'login',
-        children: [
+              import('../category/category.module').then(m => m.CategoryPageModule)
+          },
           {
-            path: '',
+            path: 'login',
             loadChildren: () =>
               import('../login/login.module').then(m => m.LoginPageModule)
+          },
+          {
+            path: 'registration',
+            loadChildren: () =>
+              import('../registration/registration.module').then(m => m.RegistrationPageModule)
+          },
+          {
+            path: 'about',
+            loadChildren: () =>
+              import('../about/about.module').then(m => m.AboutPageModule)
           }
         ]
       },
       {
-        path: 'registration',
+        path: 'tabs',
         children: [
           {
             path: '',
-            loadChildren: () =>
-              import('../registration/registration.module').then(m => m.RegistrationPageModule)
+            loadChildren: () => import('../tabs/tabs.module').then( m => m.TabsPageModule )
+          }
+        ]
+      },
+      {
+        path: 'share',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../share/share.module').then( m => m.SharePageModule )
           }
         ]
       },
