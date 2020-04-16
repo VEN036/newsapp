@@ -37,6 +37,10 @@ const routes: Routes = [
   {
     path: 'share',
     loadChildren: () => import('./share/share.module').then( m => m.SharePageModule)
+  },
+  {
+    path: 'postdetails/:id',
+    loadChildren: () => import('./postdetails/postdetails.module').then( m => m.PostdetailsPageModule)
   }
 
   //{

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Router, RouterEvent } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-news',
@@ -10,6 +11,7 @@ import { Router, RouterEvent } from '@angular/router';
 })
 
 export class NewsPage  {
+  tabBarElement: any;
   slideOpts = {
     speed: 500,
     effect: 'coverflow',
@@ -52,7 +54,7 @@ export class NewsPage  {
 
   selectedPath = '';
   
-  constructor( private http: Http, private router: Router ) 
+  constructor( private http: Http, private router: Router, public navCtrl: NavController ) 
   { 
     this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {
       this.data = data.data;
@@ -64,6 +66,16 @@ export class NewsPage  {
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
     });
+
+    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+  }
+
+  ionViewWillEnter() {
+    this.tabBarElement.style.display = "none";
+  }
+
+  ionViewWillLeave() {
+    this.tabBarElement.style.display = "flex";
   }
 
 }

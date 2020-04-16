@@ -800,13 +800,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var rxjs_observable_timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/observable/timer */ "./node_modules/rxjs-compat/_esm2015/observable/timer.js");
 
 
 
 
 
-
+//import { timer } from 'rxjs/observable/timer'; 
 let AppComponent = class AppComponent {
     constructor(platform, statusBar, splashScreen) {
         this.platform = platform;
@@ -835,7 +834,7 @@ let AppComponent = class AppComponent {
             this.statusBar.styleDefault();
             this.splashScreen.show();
             //this.splashScreen.hide();
-            Object(rxjs_observable_timer__WEBPACK_IMPORTED_MODULE_5__["timer"])(3000).subscribe(() => this.showSplash = false);
+            //timer(3000).subscribe(() => this.showSplash = false)
         });
     }
 };

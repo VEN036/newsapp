@@ -983,13 +983,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic-native/status-bar/ngx */
-    "./node_modules/@ionic-native/status-bar/ngx/index.js");
-    /* harmony import */
+    "./node_modules/@ionic-native/status-bar/ngx/index.js"); //import { timer } from 'rxjs/observable/timer'; 
 
-
-    var rxjs_observable_timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! rxjs/observable/timer */
-    "./node_modules/rxjs-compat/_esm2015/observable/timer.js");
 
     var AppComponent =
     /*#__PURE__*/
@@ -1026,11 +1021,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this.statusBar.styleDefault();
 
             _this.splashScreen.show(); //this.splashScreen.hide();
+            //timer(3000).subscribe(() => this.showSplash = false)
 
-
-            Object(rxjs_observable_timer__WEBPACK_IMPORTED_MODULE_5__["timer"])(3000).subscribe(function () {
-              return _this.showSplash = false;
-            });
           });
         }
       }]);
