@@ -1,3 +1,7 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["news-news-module"], {
@@ -138,9 +142,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         children: [{
           path: 'category',
           loadChildren: function loadChildren() {
-            return __webpack_require__.e(
+            return Promise.all(
             /*! import() | category-category-module */
-            "category-category-module").then(__webpack_require__.bind(null,
+            [__webpack_require__.e("default~category-category-module~postdetails-postdetails-module"), __webpack_require__.e("category-category-module")]).then(__webpack_require__.bind(null,
             /*! ../category/category.module */
             "./src/app/category/category.module.ts")).then(function (m) {
               return m.CategoryPageModule;
@@ -310,9 +314,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       children: [{
         path: 'category',
         loadChildren: function loadChildren() {
-          return __webpack_require__.e(
+          return Promise.all(
           /*! import() | category-category-module */
-          "category-category-module").then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~category-category-module~postdetails-postdetails-module"), __webpack_require__.e("category-category-module")]).then(__webpack_require__.bind(null,
           /*! ../category/category.module */
           "./src/app/category/category.module.ts")).then(function (m) {
             return m.CategoryPageModule;
@@ -461,64 +465,90 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
 
-    var NewsPage = function NewsPage(http, router) {
-      var _this = this;
 
-      _classCallCheck(this, NewsPage);
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
 
-      this.http = http;
-      this.router = router;
-      this.slideOpts = {
-        speed: 500,
-        effect: 'coverflow',
-        slidesPerView: 1,
-        slideOffsetBefore: 10,
-        slideOffsetAftrer: 10,
-        direction: 'vertical',
-        centeredSlides: true,
-        coverflowEffect: {
-          rotate: 20,
-          streach: 100,
-          depth: 100,
-          shadow: true,
-          slideShadows: true,
-          shadowOffset: 20,
-          modifier: 1
+    var NewsPage =
+    /*#__PURE__*/
+    function () {
+      function NewsPage(http, router, navCtrl) {
+        var _this = this;
+
+        _classCallCheck(this, NewsPage);
+
+        this.http = http;
+        this.router = router;
+        this.navCtrl = navCtrl;
+        this.slideOpts = {
+          speed: 500,
+          effect: 'coverflow',
+          slidesPerView: 1,
+          slideOffsetBefore: 10,
+          slideOffsetAftrer: 10,
+          direction: 'vertical',
+          centeredSlides: true,
+          coverflowEffect: {
+            rotate: 20,
+            streach: 100,
+            depth: 100,
+            shadow: true,
+            slideShadows: true,
+            shadowOffset: 20,
+            modifier: 1
+          }
+        };
+        this.data = [];
+        this.pages = [{
+          title: 'Category Page',
+          url: 'news/category'
+        }, {
+          title: 'Login Page',
+          url: 'news/login'
+        }, {
+          title: 'Registration Page',
+          url: 'news/registration'
+        }, {
+          title: 'About Page',
+          url: 'news/about'
+        }];
+        this.selectedPath = '';
+        this.http.get('https://madras-daily.herokuapp.com/api/news').map(function (res) {
+          return res.json();
+        }).subscribe(function (data) {
+          _this.data = data.data;
+        }, function (err) {
+          console.log("Oops!");
+        });
+        this.router.events.subscribe(function (event) {
+          _this.selectedPath = event.url;
+        });
+        this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+      } // ionViewWillEnter() {
+      //   this.tabBarElement.style.display = "flex";
+      // }
+
+
+      _createClass(NewsPage, [{
+        key: "ionViewWillLeave",
+        value: function ionViewWillLeave() {
+          this.tabBarElement.style.display = "flex";
         }
-      };
-      this.data = [];
-      this.pages = [{
-        title: 'Category Page',
-        url: 'news/category'
-      }, {
-        title: 'Login Page',
-        url: 'news/login'
-      }, {
-        title: 'Registration Page',
-        url: 'news/registration'
-      }, {
-        title: 'About Page',
-        url: 'news/about'
-      }];
-      this.selectedPath = '';
-      this.http.get('https://madras-daily.herokuapp.com/api/news').map(function (res) {
-        return res.json();
-      }).subscribe(function (data) {
-        _this.data = data.data;
-      }, function (err) {
-        console.log("Oops!");
-      });
-      this.router.events.subscribe(function (event) {
-        _this.selectedPath = event.url;
-      });
-    };
+      }]);
+
+      return NewsPage;
+    }();
 
     NewsPage.ctorParameters = function () {
       return [{
         type: _angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavController"]
       }];
     };
 
@@ -530,7 +560,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./news.page.scss */
       "./src/app/news/news.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])], NewsPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavController"]])], NewsPage);
     /***/
   }
 }]);

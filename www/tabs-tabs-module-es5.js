@@ -77,9 +77,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         children: [{
           path: '',
           loadChildren: function loadChildren() {
-            return __webpack_require__.e(
+            return Promise.all(
             /*! import() | category-category-module */
-            "category-category-module").then(__webpack_require__.bind(null,
+            [__webpack_require__.e("default~category-category-module~postdetails-postdetails-module"), __webpack_require__.e("category-category-module")]).then(__webpack_require__.bind(null,
             /*! ../category/category.module */
             "./src/app/category/category.module.ts")).then(function (m) {
               return m.CategoryPageModule;

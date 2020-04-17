@@ -78,7 +78,7 @@ const routes = [
                 children: [
                     {
                         path: 'category',
-                        loadChildren: () => __webpack_require__.e(/*! import() | category-category-module */ "category-category-module").then(__webpack_require__.bind(null, /*! ../category/category.module */ "./src/app/category/category.module.ts")).then(m => m.CategoryPageModule)
+                        loadChildren: () => Promise.all(/*! import() | category-category-module */[__webpack_require__.e("default~category-category-module~postdetails-postdetails-module"), __webpack_require__.e("category-category-module")]).then(__webpack_require__.bind(null, /*! ../category/category.module */ "./src/app/category/category.module.ts")).then(m => m.CategoryPageModule)
                     },
                     {
                         path: 'login',
@@ -174,7 +174,7 @@ const routes = [
         children: [
             {
                 path: 'category',
-                loadChildren: () => __webpack_require__.e(/*! import() | category-category-module */ "category-category-module").then(__webpack_require__.bind(null, /*! ../category/category.module */ "./src/app/category/category.module.ts")).then(m => m.CategoryPageModule)
+                loadChildren: () => Promise.all(/*! import() | category-category-module */[__webpack_require__.e("default~category-category-module~postdetails-postdetails-module"), __webpack_require__.e("category-category-module")]).then(__webpack_require__.bind(null, /*! ../category/category.module */ "./src/app/category/category.module.ts")).then(m => m.CategoryPageModule)
             },
             {
                 path: 'login',
@@ -257,15 +257,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/@angular/http.js");
 /* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm2015/add/operator/map.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
 
 
 
 
 
 let NewsPage = class NewsPage {
-    constructor(http, router) {
+    constructor(http, router, navCtrl) {
         this.http = http;
         this.router = router;
+        this.navCtrl = navCtrl;
         this.slideOpts = {
             speed: 500,
             effect: 'coverflow',
@@ -312,11 +315,19 @@ let NewsPage = class NewsPage {
         this.router.events.subscribe((event) => {
             this.selectedPath = event.url;
         });
+        this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+    }
+    // ionViewWillEnter() {
+    //   this.tabBarElement.style.display = "flex";
+    // }
+    ionViewWillLeave() {
+        this.tabBarElement.style.display = "flex";
     }
 };
 NewsPage.ctorParameters = () => [
     { type: _angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavController"] }
 ];
 NewsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -324,7 +335,7 @@ NewsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./news.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/news/news.page.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./news.page.scss */ "./src/app/news/news.page.scss")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["NavController"]])
 ], NewsPage);
 
 

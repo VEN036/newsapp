@@ -70,9 +70,9 @@ export class NewsPage  {
     this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
   }
 
-  ionViewWillEnter() {
-    this.tabBarElement.style.display = "none";
-  }
+  // ionViewWillEnter() {
+  //   this.tabBarElement.style.display = "flex";
+  // }
 
   ionViewWillLeave() {
     this.tabBarElement.style.display = "flex";

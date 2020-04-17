@@ -10,7 +10,7 @@ export class PostsService {
   setEmbeddedFeaturedImages: (value: any, index: number, array: any[]) => unknown;
 
   constructor(private http: HttpClient) { }
-  private baseURL = "https://boxingtldr.com";
+  private baseURL = "https://newsapi.org/";
   
   fetchPosts() {
     return this.http

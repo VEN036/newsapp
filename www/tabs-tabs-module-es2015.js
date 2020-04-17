@@ -41,7 +41,7 @@ const routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: () => __webpack_require__.e(/*! import() | category-category-module */ "category-category-module").then(__webpack_require__.bind(null, /*! ../category/category.module */ "./src/app/category/category.module.ts")).then(m => m.CategoryPageModule)
+                        loadChildren: () => Promise.all(/*! import() | category-category-module */[__webpack_require__.e("default~category-category-module~postdetails-postdetails-module"), __webpack_require__.e("category-category-module")]).then(__webpack_require__.bind(null, /*! ../category/category.module */ "./src/app/category/category.module.ts")).then(m => m.CategoryPageModule)
                     }
                 ]
             },
