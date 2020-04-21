@@ -17,20 +17,20 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'login',
+        path: 'discover',
         children: [
           {
             path: '',
-            loadChildren: () => import('../login/login.module').then( m => m.LoginPageModule )
+            loadChildren: () => import('../discover/discover.module').then( m => m.DiscoverPageModule )
           }
         ]
       },
       {
-        path: 'registration',
+        path: 'relevance',
         children: [
           {
             path: '',
-            loadChildren: () => import('../registration/registration.module').then( m => m.RegistrationPageModule )
+            loadChildren: () => import('../relevance/relevance.module').then( m => m.RelevancePageModule )
           }
         ]
       },

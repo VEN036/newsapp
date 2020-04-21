@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-share',
@@ -9,7 +10,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 })
 export class SharePage {
 
-  constructor( public platform: Platform, private socialSharing: SocialSharing ) { }
+  constructor( public platform: Platform, private socialSharing: SocialSharing, private route: ActivatedRoute ) { }
 
   // Share Options
   share() {

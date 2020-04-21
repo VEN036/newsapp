@@ -31,6 +31,10 @@ const routes: Routes = [
     loadChildren: () => import('./category/category.module').then( m => m.CategoryPageModule)
   },
   {
+    path: 'category/:id',
+    loadChildren: () => import('./category/category.module').then( m => m.CategoryPageModule )
+  },
+  {
     path: 'about',
     loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
   },
@@ -39,8 +43,12 @@ const routes: Routes = [
     loadChildren: () => import('./share/share.module').then( m => m.SharePageModule)
   },
   {
-    path: 'postdetails/:id',
-    loadChildren: () => import('./postdetails/postdetails.module').then( m => m.PostdetailsPageModule)
+    path: 'discover',
+    loadChildren: () => import('./discover/discover.module').then( m => m.DiscoverPageModule)
+  },
+  {
+    path: 'relevance',
+    loadChildren: () => import('./relevance/relevance.module').then( m => m.RelevancePageModule)
   }
 
   //{

@@ -1,27 +1,54 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      List
-    </ion-title>
+<!--<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> Category Page </ion-title>
   </ion-toolbar>
 </ion-header>
+ 
+<ion-content padding>
+  <div text-center *ngIf="count">Found {{ count }} posts</div>
+ 
+  <ion-card *ngFor="let post of posts">
+    <ion-card-header>
+      <ion-card-title [innerHTML]="post.title.rendered"></ion-card-title>
+      <ion-card-subtitle>{{ post.date_gmt | date }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <img [src]="post.media_url">
+      <div [innerHTML]="post.excerpt.rendered"></div>
+      <ion-button expand="full" fill="clear" [routerLink]="['/', 'posts', post.id]" text-right>Read More...</ion-button>
+    </ion-card-content>
+  </ion-card>
+ 
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingText="Loading more posts...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+ 
+</ion-content>-->
 
-<ion-content>
-  <ion-list>
-    <ion-item [routerLink]="['/home', item.id]" *ngFor="let item of category$ | async">
-      <ion-icon name="search" slot="start"></ion-icon>
-      {{item.name}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> Category </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/news"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ posts?.title.rendered }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+  
+  <div *ngIf="posts">
+    <img [src]="posts.media_url" [style.width]="'100%'">
+    <div [innerHTML]="posts.content.rendered" padding></div>
+  </div>
+ 
 </ion-content>
+ 
+<ion-footer color="secondary">
+  <ion-toolbar>
+    <ion-button expand="full" fill="clear" (click)="openOriginal()">
+      Open Original
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
