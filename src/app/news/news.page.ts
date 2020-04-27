@@ -11,6 +11,7 @@ import { NavController } from '@ionic/angular';
 })
 
 export class NewsPage  {
+
   tabBarElement: any;
   slideOpts = {
     speed: 500,

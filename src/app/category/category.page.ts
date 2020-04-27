@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-//import { LoadingController } from '@ionic/angular';
-import { WordpressService } from '../services/wordpress.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,55 +7,70 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./category.page.scss'],
 })
 export class CategoryPage implements OnInit {
+  public category : Array<any>;
   
-  posts: any;
-  // posts = [];
-  // page = 1;
-  // count = null;
+  constructor( ) { }
 
-  constructor( 
-    private wp: WordpressService,
-    private route: ActivatedRoute, 
-    //private loadingCtrl: LoadingController 
-    ) { }
-
-  ngOnInit() {
-    //this.loadPosts();
-    let id = this.route.snapshot.paramMap.get('id');
-    this.wp.getPostContent(id).subscribe(res => {
-      this.posts = res;
-    });
+  ionViewdidLoad() {
+    this.declareCategory();
   }
 
-  // async loadPosts() {
-  //   let loading = await this.loadingCtrl.create({
-  //     message: 'Loading Data...'
-  //   });
-  //   await loading.present();
+  declareCategory() : void
+  {
+    this.category = [
+      {
+        name : 'World',
+        description: 'World News Data',
+        image:'/assets/Images/world.png',
+        type: 'news'
+      },
+      {
+        name: 'Cinema',
+        description: 'Cinema News Data',
+        image:'/assets/Images/world.png',
+        type: 'news'
+      },
+      {
+        name: 'Sports',
+        description: 'Sports News data',
+        image:'/assets/Images/world.png',
+        type:'news'
+      },
+      {
+        name: 'Politics',
+        description: 'Political News Data',
+        image: '/assets/Images/world.png',
+        type: 'news'
+      }
+    ];
+  }
 
-  //   this.wp.getPosts().subscribe(res => {
-  //     this.count = this.wp.totalPosts;
-  //     this.posts = res;
-  //     loading.dismiss();
-  //   });
-  // }
+  filterCategory(param : any) : void
+  {
+    this.declareCategory();
+    let val : string = param;
+    if (val.trim() !== '')
+    {
+      this.category = this.category.filter((item) =>
+      {
+        return item.name.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.description.toLowerCase().indexOf(val.toLocaleLowerCase()) > -1;
+      })
+    }
+  }
 
-  // loadMore(event) {
-  //   this.page++;
- 
-  //   this.wp.getPosts(this.page).subscribe(res => {
-  //     this.posts = [...this.posts, ...res];
-  //     event.target.complete();
- 
-  //     // Disable infinite loading when maximum reached
-  //     if (this.page == this.wp.pages) {
-  //       event.target.disabled = true;
-  //     }
-  //   });
-  // }
+  onFilter(category : string) : void
+  {
+    this.declareCategory();
+    if (category.trim() !== 'all')
+    {
+      this.category = this.category.filter((item) => 
+      {
+        return item.type.toLowerCase().indexOf(category.toLowerCase()) > -1;
+      })
+    }
+  }
 
-  openOriginal() {
-    // Add InAppBrowser for app if want
-    window.open(this.posts.link, '_blank');
+  ngOnInit() {
+    
   }
 }

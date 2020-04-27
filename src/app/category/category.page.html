@@ -1,54 +1,43 @@
-<!--<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title> Category Page </ion-title>
-  </ion-toolbar>
-</ion-header>
- 
-<ion-content padding>
-  <div text-center *ngIf="count">Found {{ count }} posts</div>
- 
-  <ion-card *ngFor="let post of posts">
-    <ion-card-header>
-      <ion-card-title [innerHTML]="post.title.rendered"></ion-card-title>
-      <ion-card-subtitle>{{ post.date_gmt | date }}</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
-      <img [src]="post.media_url">
-      <div [innerHTML]="post.excerpt.rendered"></div>
-      <ion-button expand="full" fill="clear" [routerLink]="['/', 'posts', post.id]" text-right>Read More...</ion-button>
-    </ion-card-content>
-  </ion-card>
- 
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
-    <ion-infinite-scroll-content loadingText="Loading more posts...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
- 
-</ion-content>-->
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title> Category </ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/news"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ posts?.title.rendered }}</ion-title>
   </ion-toolbar>
 </ion-header>
- 
-<ion-content padding>
-  
-  <div *ngIf="posts">
-    <img [src]="posts.media_url" [style.width]="'100%'">
-    <div [innerHTML]="posts.content.rendered" padding></div>
-  </div>
- 
+
+<ion-content>
+  <ion-searchbar (ionInput)="filterCategory($event.target.value)"></ion-searchbar>
+
+  <ul class="filters" radio-group>
+    <li>
+      <ion-label> World </ion-label>
+      <ion-radio value="world" (ionSelect)="onFilter($event)"></ion-radio>
+    </li>
+
+    <li>
+      <ion-label> Cinema </ion-label>
+      <ion-radio value="cinema" (ionSelect)="onFilter($event)"></ion-radio>
+    </li>
+
+    <li>
+      <ion-label> Sports </ion-label>
+      <ion-radio value="sports" (ionSelect)="onFilter($event)"></ion-radio>
+    </li>
+
+    <li>
+      <ion-label> Politics </ion-label>
+      <ion-radio value="politics" (ionSelect)="onFilter($event)"></ion-radio>
+    </li>
+  </ul>
+
+  <ul class="category">
+    <li *ngFor="let c of category">
+      <img src="{{ c.image }}">
+      <h2>{{ c.name }}</h2>
+      <div [innerHTML]="c.description"></div>
+    </li>
+  </ul>
 </ion-content>
  
-<ion-footer color="secondary">
-  <ion-toolbar>
-    <ion-button expand="full" fill="clear" (click)="openOriginal()">
-      Open Original
-    </ion-button>
-  </ion-toolbar>
-</ion-footer>

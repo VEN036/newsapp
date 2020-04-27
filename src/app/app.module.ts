@@ -9,11 +9,15 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SuperTabsModule } from '@ionic-super-tabs/angular';
+import { MbscModule } from '@mobiscroll/angular-lite';
+import { HideHeaderDirective } from './directive/hide-header.directive';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -24,7 +28,8 @@ firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HideHeaderDirective
   ],
   entryComponents: [
     AppComponent
@@ -40,7 +45,9 @@ firebase.initializeApp(environment.firebaseConfig);
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    SuperTabsModule.forRoot(),
+    MbscModule
   ],
   providers: [
     StatusBar,
@@ -48,7 +55,8 @@ firebase.initializeApp(environment.firebaseConfig);
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     File,
-    SocialSharing
+    SocialSharing,
+    NativePageTransitions
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

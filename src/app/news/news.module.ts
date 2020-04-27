@@ -53,12 +53,9 @@ const routes: Routes = [
     HttpClientModule,
     HttpModule,
     IonicModule,
-    NewsPageRoutingModule
+    NewsPageRoutingModule,
   ],
   declarations: [
-    NewsPage
-  ],
-  entryComponents: [
     NewsPage
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WordpressService } from './wordpress.service';
+import { CategoryService } from './category.service';
 
-describe('WordpressService', () => {
+describe('CategoryService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: WordpressService = TestBed.get(WordpressService);
+    const service: CategoryService = TestBed.get(CategoryService);
     expect(service).toBeTruthy();
   });
 });
