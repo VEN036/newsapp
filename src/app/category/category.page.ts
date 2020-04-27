@@ -27,19 +27,19 @@ export class CategoryPage implements OnInit {
       {
         name: 'Cinema',
         description: 'Cinema News Data',
-        image:'/assets/Images/world.png',
+        image:'/assets/Images/cinema.png',
         type: 'news'
       },
       {
         name: 'Sports',
         description: 'Sports News data',
-        image:'/assets/Images/world.png',
+        image:'/assets/Images/sports.png',
         type:'news'
       },
       {
         name: 'Politics',
         description: 'Political News Data',
-        image: '/assets/Images/world.png',
+        image: '/assets/Images/politics.png',
         type: 'news'
       }
     ];
