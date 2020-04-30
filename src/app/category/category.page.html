@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary" style="font-size: medium; font-family: NotoSansTamil-Regular;">பிரிவுகள்</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-list class=menu_list>
+    <ion-item>
+    </ion-item>
+    <ion-item (click)="login()" color="primary">
+      <div class="ion_label">
+        <ion-label>உள்நுழை</ion-label>
+      </div>
+    </ion-item>
+    <ion-item (click)="register()" color="primary">
+      <div class="ion_label">
+        <ion-label>புதிய பதிவு செய்தல்</ion-label>
+      </div>
+    </ion-item>
+    <ion-item (click)="quit()" color="primary">
+      <div class="ion_label">
+        <ion-label>வெளியேறு</ion-label>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid class="ionGridMain">
+    <!-- <ion-row> -->
+    <ion-col class=ionGrid>
+      <img src="../../assets/Images/tamilnadu.png" (click)="tamilnadu()">
+    </ion-col>
+    <ion-col class=ionGrid>
+      <img src="../../assets/Images/India.png" (click)="india()">
+    </ion-col>
+    <ion-col class=ionGrid>
+      <img src="../../assets/Images/world.png" (click)="world()">
+    </ion-col>
+    <ion-col class=ionGrid>
+      <img src="../../assets/Images/Politics.png" > <!-- (click)="politics()" -->
+    </ion-col>
+    <ion-col class=ionGrid>
+      <img src="../../assets/Images/economics.png" (click)="economics()">
+    </ion-col>
+    <ion-col class=ionGrid>
+      <img src="../../assets/Images/technology.png" >  <!-- (click)="technology()" -->
+    </ion-col>
+    <ion-col class=ionGrid>
+      <img src="../../assets/Images/agriculture.png"> <!-- (click)="agri()" -->
+    </ion-col>
+    <ion-col class=ionGrid>
+      <img src="../../assets/Images/sports.png"> <!-- (click)="sports()" -->
+    </ion-col>
+    <ion-col class=ionGrid>
+      <img src="../../assets/Images/entertainment.png" > <!-- (click)="entertainment()" -->
+    </ion-col>
+    <!-- </ion-row> -->
+  </ion-grid>
+
+</ion-content>

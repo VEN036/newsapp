@@ -1,0 +1,9 @@
+{
+  "name": "newsapp",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "48ff0568"
+}

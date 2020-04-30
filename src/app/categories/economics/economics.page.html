@@ -1,0 +1,31 @@
+<ion-toolbar *ngIf="hideMe">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-button href="/news">
+      <ion-icon name="md-home" color="primary"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title color="primary">பொருளாதாரம்</ion-title>
+</ion-toolbar>
+
+<div class=screen>
+  <ion-slides pager="false" [options]="slideOpts" (ionSlideTap)="singleTap()">
+    <ion-slide *ngFor="let data of newsType">
+      <ion-card class="ion-no-margin">
+        <div class=image [style.backgroundImage]="'url(' + data.news_pics + ')'"></div>
+        <div class="heading">
+          {{ data.heading }}
+        </div>
+        <div class=ion_content>
+          <div class=newstype>
+            {{ data.news_type }} / {{data.last_updated | date: 'dd-MM-yyyy'}}
+          </div>
+          <div class=content>
+            {{ data.news_content }}
+          </div>
+        </div>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>

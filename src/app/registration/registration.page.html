@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary" style="font-size: medium; font-family: NotoSansTamil-Regular;">பதிவு செய்தல்</ion-title>
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content>
+  <form>    
+    <ion-item>
+    </ion-item>
+    
+    <ion-item lines="full">
+      <div class="ion_label">
+      <ion-label position="floating">மின்னஞ்சல்</ion-label>
+      <ion-input type="text" #email required></ion-input>
+      </div>
+    </ion-item> 
+
+    <ion-item lines="full">
+      <div class="ion_label">
+      <ion-label position="floating">கடவுச்சொல்</ion-label>
+      <ion-input type="password" #password required></ion-input>
+      </div>
+    </ion-item>
+
+    <ion-row>
+      <ion-col> 
+      <ion-button type="submit" (click)="signUp(email, password)" expand="block">பதிவுபெறுக</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

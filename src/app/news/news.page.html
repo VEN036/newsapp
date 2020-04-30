@@ -1,0 +1,94 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<!-- <ion-ion-split-pane> -->
+<ion-toolbar *ngIf="hideMe">
+  <ion-buttons slot="start" (click)="menuClick()">
+    <!-- <ion-buttons > -->
+      <ion-menu-button auto-hide="false" color="primary"></ion-menu-button>
+    <!-- </ion-buttons> -->
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-button href="/news">
+      <ion-icon name="ios-refresh" color="primary"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title color="primary">மெட்ராஸ் டெய்லி</ion-title>
+</ion-toolbar>
+
+<!-- <ion-menu contentId="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title> பட்டியல் </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-item>
+        <ion-label></ion-label>
+      </ion-item>
+      <ion-list class=menu_list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+          <ion-item [routerLink]="p.url" routerDirection="root" [class.active-item]="selectedPath === p.url" color="primary">
+            {{ p.title }}
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-item (click)="quit()" color="primary">
+          <ion-label >வெளியேற</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu> -->
+<ion-router-outlet id="content" main></ion-router-outlet>
+
+<!-- Tab bar code (footer)-Start -->
+
+<!-- <ion-tab-bar slot="bottom" translucent="true" *ngIf="hideMe">
+    <ion-tab-button (click)="shareNews()">
+      <ion-icon name="md-share" color="primary"></ion-icon>
+      <ion-label color="primary">Share</ion-label>
+    </ion-tab-button> -->
+
+<!--    <ion-tab-button href="/login">
+      <ion-icon name="log-in" color="primary"></ion-icon>
+      <ion-label color="primary">Login</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button href="/registration">
+      <ion-icon name="person-add" color="primary"></ion-icon>
+      <ion-label color="primary">Signup</ion-label>
+  </ion-tab-button>
+   <ion-tab-button href="/news">
+      <ion-icon name="home" color="primary"></ion-icon>
+      <ion-label color="primary">Home</ion-label>
+    </ion-tab-button>
+    
+     <ion-tab-button href="/bookmark">
+    <ion-icon name="bookmark"></ion-icon>
+  </ion-tab-button>
+  </ion-tab-bar> -->
+
+<!-- Tab bar code (footer)-End -->
+
+<!-- </ion-ion-split-pane> -->
+
+<div class=screen>
+  <ion-slides pager="false" [options]="slideOpts" (ionSlideTap)="singleTap()">
+    <ion-slide *ngFor="let data of data">
+      <ion-card class="ion-no-margin">
+        <div class=image [style.backgroundImage]="'url(' + data.news_pics + ')'"></div>
+        <div class="heading">
+          {{ data.heading }}
+        </div>
+        <div class=ion_content>
+          <div class=newstype>
+            {{ data.news_type }} / {{data.last_updated | date: 'dd-MM-yyyy'}}
+          </div>
+          <div class=content>
+            {{ data.news_content }}
+          </div>
+        </div>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
