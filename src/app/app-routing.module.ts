@@ -61,7 +61,11 @@ const routes: Routes = [
   {
     path: 'agriculture',
     loadChildren: () => import('./categories/agriculture/agriculture.module').then( m => m.AgriculturePageModule)
+  },  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   }
+
 
   //{
   //   path: '',
