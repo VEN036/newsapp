@@ -49,6 +49,10 @@ export class AuthenticationService {
   // }
 
   // Recover password
+  UserDetails() {
+    return this.ngFireAuth.user
+  }
+
   PasswordRecover(passwordResetEmail) {
     return this.ngFireAuth.auth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {

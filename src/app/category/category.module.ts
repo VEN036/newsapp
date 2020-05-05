@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-
 import { CategoryPageRoutingModule } from './category-routing.module';
-
 import { CategoryPage } from './category.page';
 
 @NgModule({
@@ -15,6 +13,7 @@ import { CategoryPage } from './category.page';
     IonicModule,
     CategoryPageRoutingModule
   ],
-  declarations: [CategoryPage]
+  declarations: [CategoryPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CategoryPageModule {}
