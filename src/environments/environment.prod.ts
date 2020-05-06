@@ -1,13 +1,13 @@
 export const environment = {
   production: true,
   firebaseConfig: {
-    apiKey: "AIzaSyAQpBuaNU_kWCJe_nMGbxtN6tw-iFZlIyE",
-    authDomain: "newsappauthentication-3ee29.firebaseapp.com",
-    databaseURL: "https://newsappauthentication-3ee29.firebaseio.com",
-    projectId: "newsappauthentication-3ee29",
-    storageBucket: "newsappauthentication-3ee29.appspot.com",
-    messagingSenderId: "299342956741",
-    appId: "1:299342956741:web:ea6510d351cbac2861c8ac",
-    measurementId: "G-7BN0GR34B8"
+    apiKey: "AIzaSyDdkHHMxz3Jm4zhFyZI7BNSnwrJvXKeK2g",
+    authDomain: "madrasdaily-news-snippets.firebaseapp.com",
+    databaseURL: "https://madrasdaily-news-snippets.firebaseio.com",
+    projectId: "madrasdaily-news-snippets",
+    storageBucket: "madrasdaily-news-snippets.appspot.com",
+    messagingSenderId: "295231523741",
+    appId: "1:295231523741:web:3a80dacf643c75b3ba7d74",
+    measurementId: "G-3H8YYW4KN6"
   }
 };

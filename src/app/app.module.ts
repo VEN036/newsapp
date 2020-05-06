@@ -30,7 +30,7 @@ firebase.initializeApp(environment.firebaseConfig);
   entryComponents: [
     AppComponent
   ],
-  imports: [
+  imports: [  
     BrowserModule,
     FormsModule,
     ReactiveFormsModule, 
