@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"/\"></ion-back-button>\n    </ion-buttons>\n    <ion-title color=\"primary\" style=\"font-size: medium; font-family: NotoSansTamil-Regular;\">பதிவு செய்தல்</ion-title>\n  </ion-toolbar> \n</ion-header>\n\n<ion-content>\n  <form>    \n    <ion-item>\n    </ion-item>\n    \n    <ion-item lines=\"full\">\n      <div class=\"ion_label\">\n      <ion-label position=\"floating\">மின்னஞ்சல்</ion-label>\n      <ion-input type=\"text\" #email required></ion-input>\n      </div>\n    </ion-item> \n\n    <ion-item lines=\"full\">\n      <div class=\"ion_label\">\n      <ion-label position=\"floating\">கடவுச்சொல்</ion-label>\n      <ion-input type=\"password\" #password required></ion-input>\n      </div>\n    </ion-item>\n\n    <ion-row>\n      <ion-col> \n      <ion-button type=\"submit\" (click)=\"signUp(email, password)\" expand=\"block\">பதிவுபெறுக</ion-button>\n      </ion-col>\n    </ion-row>\n  </form>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title color=\"primary\" style=\"font-size: medium; font-family: NotoSansTamil-Regular;\">பதிவு செய்தல்</ion-title>\r\n  </ion-toolbar> \r\n</ion-header>\r\n\r\n<ion-content>\r\n  <form>    \r\n    <ion-item>\r\n    </ion-item>\r\n    \r\n    <ion-item lines=\"full\">\r\n      <div class=\"ion_label\">\r\n      <ion-label position=\"floating\">மின்னஞ்சல்</ion-label>\r\n      <ion-input type=\"text\" #email required></ion-input>\r\n      </div>\r\n    </ion-item> \r\n\r\n    <ion-item lines=\"full\">\r\n      <div class=\"ion_label\">\r\n      <ion-label position=\"floating\">கடவுச்சொல்</ion-label>\r\n      <ion-input type=\"password\" #password required></ion-input>\r\n      </div>\r\n    </ion-item>\r\n\r\n    <ion-row>\r\n      <ion-col> \r\n      <ion-button type=\"submit\" (click)=\"signUp(email, password)\" expand=\"block\">பதிவுபெறுக</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </form>\r\n</ion-content>");
 
 /***/ }),
 
@@ -119,29 +119,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/authentication.service */ "./src/app/services/authentication.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
 
 
 
 
 let RegistrationPage = class RegistrationPage {
-    constructor(authService, router) {
+    constructor(authService, router, toastController, loadingController, alertController) {
         this.authService = authService;
         this.router = router;
+        this.toastController = toastController;
+        this.loadingController = loadingController;
+        this.alertController = alertController;
     }
     ngOnInit() { }
     signUp(email, password) {
         this.authService.RegisterUser(email.value, password.value)
-            .then((res) => {
-            this.authService.SendVerificationMail();
-            this.router.navigate(['verify-email']);
+            .then(data => {
+            console.log(data);
+            this.presentToast('புதிய பதிவு வெற்றி பெற்றது', false, 'bottom', 1000);
+            this.router.navigate(['login']);
         }).catch((error) => {
-            window.alert(error.message);
+            window.alert("தொடர்ந்து புதிய பதிவைப் பயன்படுத்துவதற்கு சரியான மின்னஞ்சல் முகவரியைக் கொடுங்கள்");
+        });
+    }
+    presentToast(message, show_button, position, duration) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message: message,
+                showCloseButton: show_button,
+                position: position,
+                duration: duration
+            });
+            toast.present();
         });
     }
 };
 RegistrationPage.ctorParameters = () => [
     { type: _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] }
 ];
 RegistrationPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -150,7 +171,10 @@ RegistrationPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./registration.page.scss */ "./src/app/registration/registration.page.scss")).default]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]])
 ], RegistrationPage);
 
 

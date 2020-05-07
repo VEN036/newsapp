@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"/\"></ion-back-button>\n    </ion-buttons>\n    <ion-title color=\"primary\" style=\"font-size: medium; font-family: NotoSansTamil-Regular;\">புகுபதிகை</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<!-- Normal Sign In Method -->\n<ion-content>\n  <form>    \n    <ion-item>\n    </ion-item>\n    <ion-item lines=\"full\">\n      <div class=\"ion_label\">\n      <ion-label position=\"floating\">மின்னஞ்சல்</ion-label>\n      <ion-input type=\"text\" #email required></ion-input>\n      </div>\n    </ion-item> \n\n    <ion-item lines=\"full\">\n      <div class=\"ion_label\">\n      <ion-label position=\"floating\">கடவுச்சொல்</ion-label>\n      <ion-input type=\"password\" #password required></ion-input>\n      </div>\n    </ion-item>\n\n    <ion-row>\n      <ion-col> \n        <div class=\"ion_label\">\n      <ion-button type=\"submit\" (click)=\"logIn(email, password)\" expand=\"block\">உள்நுழைய</ion-button>\n      </div>\n      </ion-col>\n    </ion-row>\n  </form>\n</ion-content>\n\n<ion-content>\n  <form>\n    <ion-row>\n      <ion-col>\n        <ion-button type=\"submit\" color=\"primary\" (click)=\"authService.GoogleAuth()\" expand=\"block\">கூகிள் மூலம் உள்நுழைய</ion-button>\n        <ion-button type=\"submit\" color=\"primary\" (click)=\"authService.FacebookAuth()\" expand=\"block\">முகநூல் மூலம் உள்நுழைய</ion-button>\n        <ion-button type=\"submit\" color=\"primary\" (click)=\"authService.TwitterAuth()\" expand=\"block\">ட்விட்டர் மூலம் உள்நுழைய</ion-button>\n      </ion-col>\n    </ion-row>\n  </form>\n</ion-content>\n\n<!--<ion-content padding>\n  <button ion-button full (click)=\"doLogin()\">Login</button>\n</ion-content>-->\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title color=\"primary\" style=\"font-size: medium; font-family: NotoSansTamil-Regular;\">புகுபதிகை</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<!-- Normal Sign In Method -->\r\n<ion-content>\r\n  <form>    \r\n    <ion-item>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <div class=\"ion_label\">\r\n      <ion-label position=\"floating\">மின்னஞ்சல்</ion-label>\r\n      <ion-input type=\"text\" #email required  maxlength=\"100\"></ion-input>\r\n      </div>\r\n    </ion-item> \r\n\r\n    <ion-item lines=\"full\">\r\n      <div class=\"ion_label\">\r\n      <ion-label position=\"floating\">கடவுச்சொல்</ion-label>\r\n      <ion-input type=\"password\" #password required max=\"60\"></ion-input>\r\n      </div>\r\n    </ion-item>\r\n\r\n    <ion-row>\r\n      <ion-col> \r\n        <div class=\"ion_label\">\r\n      <ion-button type=\"submit\" (click)=\"logIn(email, password)\" expand=\"block\">உள்நுழைய</ion-button>\r\n      <ion-button (click)=\"ForgotPassword()\" expand=\"block\">கடவுச்சொல் மீட்க</ion-button>\r\n      </div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </form>\r\n</ion-content>\r\n\r\n<ion-content>\r\n  <form>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-button type=\"submit\" color=\"primary\" (click)=\"authService.GoogleAuth()\" expand=\"block\">கூகிள் மூலம் உள்நுழைய</ion-button>\r\n        <!-- <ion-button type=\"submit\" color=\"primary\" (click)=\"authService.FacebookAuth()\" expand=\"block\">முகநூல் மூலம் உள்நுழைய</ion-button>\r\n        <ion-button type=\"submit\" color=\"primary\" (click)=\"authService.TwitterAuth()\" expand=\"block\">ட்விட்டர் மூலம் உள்நுழைய</ion-button> -->\r\n      </ion-col>\r\n    </ion-row>\r\n  </form>\r\n</ion-content>\r\n\r\n<!--<ion-content padding>\r\n  <button ion-button full (click)=\"doLogin()\">Login</button>\r\n</ion-content>-->\r\n";
     /***/
   },
 
@@ -221,15 +221,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ../services/authentication.service */
     "./src/app/services/authentication.service.ts");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
 
     var LoginPage =
     /*#__PURE__*/
     function () {
-      function LoginPage(authService, router) {
+      function LoginPage(authService, router, toastController, loadingController) {
         _classCallCheck(this, LoginPage);
 
         this.authService = authService;
         this.router = router;
+        this.toastController = toastController;
+        this.loadingController = loadingController;
       }
 
       _createClass(LoginPage, [{
@@ -240,16 +248,51 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function logIn(email, password) {
           var _this = this;
 
-          this.authService.SignIn(email.value, password.value).then(function (res) {
-            if (_this.authService.isEmailVerified) {
-              _this.router.navigate(['dashboard']);
-            } else {
-              window.alert('Email is not verified');
-              return false;
-            }
+          this.authService.SignIn(email.value, password.value).then(function (data) {
+            console.log(data);
+
+            _this.presentToast('உள்நுழைவு வெற்றி பெற்றது', false, 'bottom', 1000);
+
+            _this.router.navigate(['category']);
           }).catch(function (error) {
             window.alert("சரியான மின்னஞ்சல் முகவரி அல்லது கடவுச்சொல்லை உள்ளிடவும்");
           });
+        }
+      }, {
+        key: "ForgotPassword",
+        value: function ForgotPassword() {
+          this.router.navigate(['../forgot-password']);
+        }
+      }, {
+        key: "presentToast",
+        value: function presentToast(message, show_button, position, duration) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
+          /*#__PURE__*/
+          regeneratorRuntime.mark(function _callee() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.toastController.create({
+                      message: message,
+                      showCloseButton: show_button,
+                      position: position,
+                      duration: duration
+                    });
+
+                  case 2:
+                    toast = _context.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
         }
       }]);
 
@@ -261,6 +304,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"]
       }, {
         type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"]
       }];
     };
 
@@ -272,7 +319,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./login.page.scss */
       "./src/app/login/login.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], LoginPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authentication_service__WEBPACK_IMPORTED_MODULE_3__["AuthenticationService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"]])], LoginPage);
     /***/
   }
 }]);

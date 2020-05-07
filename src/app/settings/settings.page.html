@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>அமைப்புகள்</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-item>
+</ion-item>
+
+<ion-content>
+  <ion-item>
+    <ion-icon name="text" color="success"></ion-icon>
+    <ion-label>மொழிகள்</ion-label>
+    <ion-toggle color="primary" slot="end" (click)="open('language')"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="notifications" color="success"></ion-icon>
+    <ion-label>அறிவிப்புகள்</ion-label>
+    <ion-toggle color="primary" slot="end" (click)="open('notification_id')"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="cloudy-night" color="success"></ion-icon>
+    <ion-label>இரவு நிலை</ion-label>
+    <ion-toggle color="primary" slot="end" (click)="open('display')"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="locate" color="success"></ion-icon>
+    <ion-label>இடம்</ion-label>
+    <ion-toggle color="primary" slot="end" (click)="open('location')"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="keypad" color="success"></ion-icon>
+    <ion-label>விசைப்பலகை</ion-label>
+    <ion-toggle color="primary" slot="end" (click)="open('keyboard')"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-list>
+      <a (click)="open('store')"> இந்த பயன்பாட்டைப் பகிரவும் </a>
+    </ion-list>
+  </ion-item>
+  <ion-item>
+    <ion-list>
+      <a (click)="open('store')"> பின்னூட்டம் </a>
+    </ion-list>
+  </ion-item>
+  <ion-item>
+    <ion-list>
+      <a (click)="open('search')"> விதிமுறை </a>
+    </ion-list>
+  </ion-item>
+  <ion-item>
+    <ion-list>
+      <a (click)="open('privacy')"> தனியுரிமை </a>
+    </ion-list>
+  </ion-item>
+</ion-content>

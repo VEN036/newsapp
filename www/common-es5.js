@@ -1172,21 +1172,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _shared_firebaseuser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../shared/firebaseuser */
+    "./src/app/shared/firebaseuser.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
     /* harmony import */
 
 
-    var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! @angular/fire/auth */
     "./node_modules/@angular/fire/auth/es2015/index.js");
     /* harmony import */
 
 
-    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @angular/fire/firestore */
     "./node_modules/@angular/fire/firestore/es2015/index.js");
+    /* harmony import */
+
+
+    var firebase__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! firebase */
+    "./node_modules/firebase/dist/index.cjs.js");
+    /* harmony import */
+
+
+    var firebase__WEBPACK_IMPORTED_MODULE_7___default =
+    /*#__PURE__*/
+    __webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_7__);
 
     var AuthenticationService =
     /*#__PURE__*/
@@ -1224,17 +1242,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function RegisterUser(email, password) {
           return this.ngFireAuth.auth.createUserWithEmailAndPassword(email, password);
         } // Email verification when new user register
+        // SendVerificationMail() {
+        //   return this.ngFireAuth.auth.currentUser.sendEmailVerification()
+        //   .then(() => {
+        //     this.router.navigate(['verify-email']);
+        //   })
+        // }
+        // Recover password
 
       }, {
-        key: "SendVerificationMail",
-        value: function SendVerificationMail() {
-          var _this2 = this;
+        key: "getCurrentUser",
+        value: function getCurrentUser() {
+          return new Promise(function (resolve, reject) {
+            firebase__WEBPACK_IMPORTED_MODULE_7__["auth"]().onAuthStateChanged(function (user) {
+              var userModel = new _shared_firebaseuser__WEBPACK_IMPORTED_MODULE_3__["FirebaseUserModel"]();
 
-          return this.ngFireAuth.auth.currentUser.sendEmailVerification().then(function () {
-            _this2.router.navigate(['verify-email']);
+              if (user) {
+                if (user.providerData[0].providerId == 'password') {
+                  //use a default image
+                  userModel.image = user.photoURL;
+                  userModel.name = user.displayName;
+                  userModel.provider = user.providerData[0].providerId;
+                  return resolve(userModel);
+                } else {
+                  userModel.image = user.photoURL;
+                  userModel.name = user.displayName;
+                  userModel.provider = user.providerData[0].providerId;
+                  return resolve(userModel);
+                }
+              } else {
+                reject('No user logged in');
+              }
+            });
           });
-        } // Recover password
-
+        }
       }, {
         key: "PasswordRecover",
         value: function PasswordRecover(passwordResetEmail) {
@@ -1247,6 +1288,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       }, {
         key: "GoogleAuth",
+        // Return true when user's email is verified
+        // get isEmailVerified(): boolean {
+        //   const user = JSON.parse(localStorage.getItem('user'));
+        //   return (user.emailVerified !== false) ? true : false;
+        // }
         // Sign in with Gmail
         value: function GoogleAuth() {
           return this.AuthLogin(new firebase_app__WEBPACK_IMPORTED_MODULE_2__["auth"].GoogleAuthProvider());
@@ -1267,14 +1313,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "AuthLogin",
         value: function AuthLogin(provider) {
-          var _this3 = this;
+          var _this2 = this;
 
           return this.ngFireAuth.auth.signInWithPopup(provider).then(function (result) {
-            _this3.ngZone.run(function () {
-              _this3.router.navigate(['dashboard']);
+            _this2.ngZone.run(function () {
+              _this2.router.navigate(['category']);
             });
 
-            _this3.SetUserData(result.user);
+            _this2.SetUserData(result.user);
           }).catch(function (error) {
             window.alert(error);
           });
@@ -1299,12 +1345,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "SignOut",
         value: function SignOut() {
-          var _this4 = this;
+          var _this3 = this;
 
           return this.ngFireAuth.auth.signOut().then(function () {
             localStorage.removeItem('user');
 
-            _this4.router.navigate(['login']);
+            _this3.router.navigate(['login']);
           });
         }
       }, {
@@ -1312,13 +1358,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         get: function get() {
           var user = JSON.parse(localStorage.getItem('user'));
           return user !== null && user.emailVerified !== false ? true : false;
-        } // Return true when user's email is verified
-
-      }, {
-        key: "isEmailVerified",
-        get: function get() {
-          var user = JSON.parse(localStorage.getItem('user'));
-          return user.emailVerified !== false ? true : false;
         }
       }]);
 
@@ -1327,11 +1366,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     AuthenticationService.ctorParameters = function () {
       return [{
-        type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"]
+        type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"]
       }, {
-        type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"]
+        type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"]
       }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
       }, {
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]
       }];
@@ -1339,8 +1378,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     AuthenticationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])], AuthenticationService);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])], AuthenticationService);
     /***/
+  },
+
+  /***/
+  "./src/app/shared/firebaseuser.ts":
+  /*!****************************************!*\
+    !*** ./src/app/shared/firebaseuser.ts ***!
+    \****************************************/
+
+  /*! exports provided: FirebaseUserModel */
+
+  /***/
+  function srcAppSharedFirebaseuserTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "FirebaseUserModel", function () {
+      return FirebaseUserModel;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    var FirebaseUserModel = function FirebaseUserModel() {
+      _classCallCheck(this, FirebaseUserModel);
+
+      this.image = "";
+      this.name = "";
+      this.provider = "";
+    };
+    /***/
+
   }
 }]);
 //# sourceMappingURL=common-es5.js.map

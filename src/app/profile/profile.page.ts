@@ -4,7 +4,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFireDatabase } from "@angular/fire/database";
 import { IonicPage } from "ionic-angular";
 import { Profile } from "../shared/profile";
-import { UserPage } from '../user/user.page';
+import 'rxjs/add/operator/take';
 
 @IonicPage()
 @Component({

@@ -1,13 +1,17 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title> User Profile </ion-title>
+  <ion-toolbar>
+    <ion-title> பயனர் சுயவிவரம் </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-item></ion-item>
 <ion-content padding>
-  <p>Username: {{(profileData | async)?.username}}</p>
-  <p>Firstname: {{(profileData | async)?.firstname}}</p>
-  <p>Lastname: {{(profileData | async)?.lastname}}</p>
-  <p>Email: {{(profileData | async)?.email}}</p>
+  <p>பயனர்பெயர்: {{(profileData | async)?.username}}</p>
+  <p>முதல் பெயர்: {{(profileData | async)?.firstname}}</p>
+  <p>கடைசி பெயர்: {{(profileData | async)?.lastname}}</p>
+  <p>மின்னஞ்சல்: {{(profileData | async)?.email}}</p>
+  <ion-button expand="block" (click)="logout()" color="undefined" class="transition">
+    <strong class="white">வெளியேறு</strong></ion-button>
 </ion-content>
+
+
