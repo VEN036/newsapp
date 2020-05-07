@@ -15,14 +15,14 @@
     <ion-item lines="full">
       <div class="ion_label">
       <ion-label position="floating">மின்னஞ்சல்</ion-label>
-      <ion-input type="text" #email required></ion-input>
+      <ion-input type="text" #email required  maxlength="100"></ion-input>
       </div>
     </ion-item> 
 
     <ion-item lines="full">
       <div class="ion_label">
       <ion-label position="floating">கடவுச்சொல்</ion-label>
-      <ion-input type="password" #password required></ion-input>
+      <ion-input type="password" #password required max="60"></ion-input>
       </div>
     </ion-item>
 
@@ -42,8 +42,8 @@
     <ion-row>
       <ion-col>
         <ion-button type="submit" color="primary" (click)="authService.GoogleAuth()" expand="block">கூகிள் மூலம் உள்நுழைய</ion-button>
-        <ion-button type="submit" color="primary" (click)="authService.FacebookAuth()" expand="block">முகநூல் மூலம் உள்நுழைய</ion-button>
-        <ion-button type="submit" color="primary" (click)="authService.TwitterAuth()" expand="block">ட்விட்டர் மூலம் உள்நுழைய</ion-button>
+        <!-- <ion-button type="submit" color="primary" (click)="authService.FacebookAuth()" expand="block">முகநூல் மூலம் உள்நுழைய</ion-button>
+        <ion-button type="submit" color="primary" (click)="authService.TwitterAuth()" expand="block">ட்விட்டர் மூலம் உள்நுழைய</ion-button> -->
       </ion-col>
     </ion-row>
   </form>

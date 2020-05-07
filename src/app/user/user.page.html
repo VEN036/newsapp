@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> User Profile </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-item></ion-item>
+<ion-content padding>
+  <p>Username: {{(profileData | async)?.username}}</p>
+  <p>Firstname: {{(profileData | async)?.firstname}}</p>
+  <p>Lastname: {{(profileData | async)?.lastname}}</p>
+  <p>Email: {{(profileData | async)?.email}}</p>
+</ion-content>

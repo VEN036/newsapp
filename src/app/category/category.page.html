@@ -5,26 +5,12 @@
     </ion-buttons>
     <ion-title color="primary" style="font-size: medium; font-family: NotoSansTamil-Regular;">பிரிவுகள்</ion-title>
     <ion-buttons slot="end">
-      <ion-buttons>
-        <ion-icon name="settings" color="primary">
-        </ion-icon>
-      </ion-buttons>
+      <ion-button href="/profile">
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-split-pane contentId="main">
-  <!--  our side menu  -->
-  <ion-menu contentId="main" side="end">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Profile</ion-title>
-      </ion-toolbar>
-    </ion-header>
-  </ion-menu>
-  <!-- the main content -->
-  <ion-router-outlet id="main"></ion-router-outlet>
-</ion-split-pane>
 
 <ion-content>
   <ion-list class=menu_list>
