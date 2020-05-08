@@ -27,7 +27,7 @@ export class RegistrationPage implements OnInit {
     .then(data => {
       console.log(data);
       this.presentToast('புதிய பதிவு வெற்றி பெற்றது', false, 'bottom', 1000);
-      this.router.navigate(['login']);
+      this.router.navigate(['profile']);
     }).catch ((error) => {
       window.alert("தொடர்ந்து புதிய பதிவைப் பயன்படுத்துவதற்கு சரியான மின்னஞ்சல் முகவரியைக் கொடுங்கள்")
     })

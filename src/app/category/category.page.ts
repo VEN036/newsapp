@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-category',
@@ -8,7 +9,34 @@ import { Router } from '@angular/router';
 })
 export class CategoryPage implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(
+    private router:Router,
+    public alertCtrl: AlertController
+    ) { }
+
+  async profileClick(){
+    const confirm = await this.alertCtrl.create({
+      header:'உறுதிப்படுத்தவும்!',
+      message: 'உங்கள் சுயவிவரத்தைக் காண நீங்கள் முதலில் பதிவு செய்ய வேண்டும்.',
+      buttons: [
+        {
+          text: 'ரத்துசெய்',
+          role: 'cancel',
+          handler: () => {
+            console.log('ரத்துசெய்வதை உறுதிப்படுத்தவும்');
+          }
+        },
+        {
+          text: 'சரி',
+          handler: () => {
+            console.log('சரி என்பதை உறுதிப்படுத்தவும்');
+            this.router.navigate(['../profile']);
+          }
+        }
+      ]
+    });
+    await confirm.present();
+  }
 
   quit(){
     if (window.confirm("மெட்ராஸ் டெய்லியில் இருந்து வெளியேற விரும்புகிறீர்களா?")) {

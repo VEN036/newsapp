@@ -1,7 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { auth } from 'firebase/app';
 import { User } from "../shared/user";
-import { FirebaseUserModel } from '../shared/firebaseuser';
 import { Router } from "@angular/router";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
@@ -51,30 +50,7 @@ export class AuthenticationService {
   // }
 
   // Recover password
-  getCurrentUser(){
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().onAuthStateChanged(function(user){
-        let userModel = new FirebaseUserModel();
-        if (user) {
-          if(user.providerData[0].providerId == 'password'){
-            //use a default image
-            userModel.image = user.photoURL;
-            userModel.name = user.displayName;
-            userModel.provider = user.providerData[0].providerId;
-            return resolve(userModel);
-          }
-          else{
-            userModel.image = user.photoURL;
-            userModel.name = user.displayName;
-            userModel.provider = user.providerData[0].providerId;
-            return resolve(userModel);
-          }
-        } else {
-          reject('No user logged in');
-        }
-      })
-    })
-  }
+
 
   PasswordRecover(passwordResetEmail) {
     return this.ngFireAuth.auth.sendPasswordResetEmail(passwordResetEmail)
