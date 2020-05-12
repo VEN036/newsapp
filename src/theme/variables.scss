@@ -77,3 +77,8 @@
 }
 
 $mbsc-font-path: '../lib/mobiscroll/css/';
+
+/** light and dark mode **/
+
+@import "theme-light";
+@import "theme-dark";

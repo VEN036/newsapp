@@ -38,6 +38,10 @@ export class CategoryPage implements OnInit {
     await confirm.present();
   }
 
+  settingsClick() {
+    this.router.navigate(['../settings']);
+  }
+
   quit(){
     if (window.confirm("மெட்ராஸ் டெய்லியில் இருந்து வெளியேற விரும்புகிறீர்களா?")) {
       navigator["app"].exitApp();

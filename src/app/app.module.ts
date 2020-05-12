@@ -14,6 +14,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
+import { OneSignal } from '@ionic-native/onesignal/ngx';  
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -56,7 +57,8 @@ firebase.initializeApp(environment.firebaseConfig);
     File,
     SocialSharing,
     Screenshot,
-    OpenNativeSettings
+    OpenNativeSettings,
+    OneSignal
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

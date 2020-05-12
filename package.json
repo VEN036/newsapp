@@ -28,6 +28,7 @@
         "@ionic-native/file": "^5.23.0",
         "@ionic-native/http": "^5.22.0",
         "@ionic-native/media-capture": "^4.20.0",
+        "@ionic-native/onesignal": "^5.25.0",
         "@ionic-native/open-native-settings": "^5.25.0",
         "@ionic-native/screenshot": "^5.23.0",
         "@ionic-native/social-sharing": "^5.23.0",
@@ -76,6 +77,7 @@
         "mobiscroll": "^3.0.0-beta6",
         "node-cors": "^1.0.0",
         "observable": "^2.1.4",
+        "onesignal-cordova-plugin": "^2.9.1",
         "reactform": "^1.0.81",
         "rxjs": "^6.5.4",
         "rxjs-compat": "^6.5.4",
@@ -142,7 +144,8 @@
             },
             "cordova-plugin-file": {},
             "com.darktalker.cordova.screenshot": {},
-            "cordova-open-native-settings": {}
+            "cordova-open-native-settings": {},
+            "onesignal-cordova-plugin": {}
         },
         "platforms": [
             "ios",
