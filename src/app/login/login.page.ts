@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
         this.presentToast('உள்நுழைவு வெற்றி பெற்றது', false, 'bottom', 1000);
         this.router.navigate(['category']); 
       }).catch((error) => {
-        window.alert("சரியான மின்னஞ்சல் முகவரி அல்லது கடவுச்சொல்லை உள்ளிடவும்")
+        this.presentToast('சரியான மின்னஞ்சல் முகவரி அல்லது கடவுச்சொல்லை உள்ளிடவும்', false, 'bottom', 1000);
       })
   }
 

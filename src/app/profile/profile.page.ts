@@ -34,7 +34,7 @@ export class ProfilePage {
       }
     })
   }
-
+  
   wantsToRegistration() {
     this.presentToast('உங்கள் பதிவுக்கு தொடரவும்', false, 'bottom', 1000);
     this.router.navigate(['/registration']);

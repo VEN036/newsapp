@@ -60,6 +60,7 @@ export class NewsPage {
   ];
 
   selectedPath = '';
+  alertCtrl: any;
 
   singleTap() {
     this.hideMe = !this.hideMe;
@@ -67,14 +68,26 @@ export class NewsPage {
   }
 
   quit() {
-    if (window.confirm("மெட்ராஸ் டெய்லியில் இருந்து வெளியேற விரும்புகிறீர்களா?")) {
-      navigator["app"].exitApp();
-    }
+    let confirm = this.alertCtrl.create({
+      header: 'உறுதிப்படுத்தவும்!',
+      message: 'மெட்ராஸ் டெய்லியில் இருந்து வெளியேற விரும்புகிறீர்களா?',
+      buttons: [
+        {
+          text: 'சரி',
+          handler: () => {
+            navigator["app"].exitApp();;
+          }
+        },
+        {
+          text: 'ரத்துசெய்',
+          role: 'cancel',
+          handler: () => {
+          }
+        }
+      ]
+    }).then(confirm =>
+      confirm.present());
   }
-
-
-
-
 
   constructor(private http: Http, private router: Router, private platform: Platform,
     private socialSharing: SocialSharing, public screenshot: Screenshot) {

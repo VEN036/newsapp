@@ -18,12 +18,12 @@
   <ion-list class=menu_list>
     <ion-item>
     </ion-item>
-    <ion-item (click)="login()" color="primary">
+    <ion-item *ngIf="!user" (click)="login()" color="primary">
       <div class="ion_label">
         <ion-label>உள்நுழை</ion-label>
       </div>
     </ion-item>
-    <ion-item (click)="register()" color="primary">
+    <ion-item *ngIf="!user" (click)="register()" color="primary">
       <div class="ion_label">
         <ion-label>புதிய பதிவு செய்தல்</ion-label>
       </div>
