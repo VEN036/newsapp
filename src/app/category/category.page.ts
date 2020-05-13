@@ -27,6 +27,10 @@ export class CategoryPage implements OnInit {
       })
      }
 
+profile(){
+  this.router.navigate(['../profile']);
+}
+
   async profileClick(){
     const confirm = await this.alertCtrl.create({
       header:'உறுதிப்படுத்தவும்!',

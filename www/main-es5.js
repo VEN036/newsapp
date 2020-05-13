@@ -954,23 +954,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'profile',
       loadChildren: function loadChildren() {
-        return __webpack_require__.e(
+        return Promise.all(
         /*! import() | profile-profile-module */
-        "profile-profile-module").then(__webpack_require__.bind(null,
+        [__webpack_require__.e("common"), __webpack_require__.e("profile-profile-module")]).then(__webpack_require__.bind(null,
         /*! ./profile/profile.module */
         "./src/app/profile/profile.module.ts")).then(function (m) {
           return m.ProfilePageModule;
         });
       }
     }, {
-      path: 'user',
+      path: 'settings',
       loadChildren: function loadChildren() {
-        return Promise.all(
-        /*! import() | user-user-module */
-        [__webpack_require__.e("common"), __webpack_require__.e("user-user-module")]).then(__webpack_require__.bind(null,
-        /*! ./user/user.module */
-        "./src/app/user/user.module.ts")).then(function (m) {
-          return m.UserPageModule;
+        return __webpack_require__.e(
+        /*! import() | settings-settings-module */
+        "settings-settings-module").then(__webpack_require__.bind(null,
+        /*! ./settings/settings.module */
+        "./src/app/settings/settings.module.ts")).then(function (m) {
+          return m.SettingsPageModule;
         });
       }
     } //{
@@ -1244,65 +1244,77 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _ionic_native_open_native_settings_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! @ionic-native/open-native-settings/ngx */
+    "./node_modules/@ionic-native/open-native-settings/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! @ionic-native/onesignal/ngx */
+    "./node_modules/@ionic-native/onesignal/ngx/index.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! @angular/forms */
     "./node_modules/@angular/forms/fesm2015/forms.js");
     /* harmony import */
 
 
-    var _angular_fire__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _angular_fire__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! @angular/fire */
     "./node_modules/@angular/fire/es2015/index.js");
     /* harmony import */
 
 
-    var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
     /*! @angular/fire/auth */
     "./node_modules/@angular/fire/auth/es2015/index.js");
     /* harmony import */
 
 
-    var _angular_fire_database__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    var _angular_fire_database__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
     /*! @angular/fire/database */
     "./node_modules/@angular/fire/database/es2015/index.js");
     /* harmony import */
 
 
-    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
     /*! @angular/fire/firestore */
     "./node_modules/@angular/fire/firestore/es2015/index.js");
     /* harmony import */
 
 
-    var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
     /*! @angular/fire/storage */
     "./node_modules/@angular/fire/storage/es2015/index.js");
     /* harmony import */
 
 
-    var src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    var src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
     /*! src/environments/environment.prod */
     "./src/environments/environment.prod.ts");
     /* harmony import */
 
 
-    var firebase__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+    var firebase__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
     /*! firebase */
     "./node_modules/firebase/dist/index.cjs.js");
     /* harmony import */
 
 
-    var firebase__WEBPACK_IMPORTED_MODULE_21___default =
+    var firebase__WEBPACK_IMPORTED_MODULE_23___default =
     /*#__PURE__*/
-    __webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_21__);
+    __webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_23__);
     /* harmony import */
 
 
-    var _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
+    var _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
     /*! @ionic-native/screenshot/ngx */
     "./node_modules/@ionic-native/screenshot/ngx/index.js");
 
-    firebase__WEBPACK_IMPORTED_MODULE_21__["initializeApp"](src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_20__["environment"].firebaseConfig);
+    firebase__WEBPACK_IMPORTED_MODULE_23__["initializeApp"](src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_22__["environment"].firebaseConfig);
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -1311,16 +1323,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
       entryComponents: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"], _angular_http__WEBPACK_IMPORTED_MODULE_13__["HttpModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_16__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_16__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"], _angular_http__WEBPACK_IMPORTED_MODULE_13__["HttpModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({
         backButtonText: ''
-      }), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_15__["AngularFireModule"].initializeApp(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_20__["environment"].firebaseConfig), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_16__["AngularFireAuthModule"], _angular_fire_database__WEBPACK_IMPORTED_MODULE_17__["AngularFireDatabaseModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_18__["AngularFirestoreModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_19__["AngularFireStorageModule"]],
+      }), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_17__["AngularFireModule"].initializeApp(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_22__["environment"].firebaseConfig), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_18__["AngularFireAuthModule"], _angular_fire_database__WEBPACK_IMPORTED_MODULE_19__["AngularFireDatabaseModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_20__["AngularFirestoreModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_21__["AngularFireStorageModule"]],
       providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
       }, {
         provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ErrorHandler"],
         useClass: ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicErrorHandler"]
-      }, _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_10__["File"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_11__["SocialSharing"], _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_22__["Screenshot"]],
+      }, _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_10__["File"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_11__["SocialSharing"], _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_24__["Screenshot"], _ionic_native_open_native_settings_ngx__WEBPACK_IMPORTED_MODULE_14__["OpenNativeSettings"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_15__["OneSignal"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
       schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]]
     })], AppModule);

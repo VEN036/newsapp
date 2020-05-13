@@ -493,9 +493,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "quit",
         value: function quit() {
-          if (window.confirm("மெட்ராஸ் டெய்லியில் இருந்து வெளியேற விரும்புகிறீர்களா?")) {
-            navigator["app"].exitApp();
-          }
+          var confirm = this.alertCtrl.create({
+            header: 'உறுதிப்படுத்தவும்!',
+            message: 'மெட்ராஸ் டெய்லியில் இருந்து வெளியேற விரும்புகிறீர்களா?',
+            buttons: [{
+              text: 'சரி',
+              handler: function handler() {
+                navigator["app"].exitApp();
+                ;
+              }
+            }, {
+              text: 'ரத்துசெய்',
+              role: 'cancel',
+              handler: function handler() {}
+            }]
+          }).then(function (confirm) {
+            return confirm.present();
+          });
         }
       }, {
         key: "news_data",

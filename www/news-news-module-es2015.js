@@ -309,9 +309,25 @@ let NewsPage = class NewsPage {
         console.log("Single tap operation done");
     }
     quit() {
-        if (window.confirm("மெட்ராஸ் டெய்லியில் இருந்து வெளியேற விரும்புகிறீர்களா?")) {
-            navigator["app"].exitApp();
-        }
+        let confirm = this.alertCtrl.create({
+            header: 'உறுதிப்படுத்தவும்!',
+            message: 'மெட்ராஸ் டெய்லியில் இருந்து வெளியேற விரும்புகிறீர்களா?',
+            buttons: [
+                {
+                    text: 'சரி',
+                    handler: () => {
+                        navigator["app"].exitApp();
+                        ;
+                    }
+                },
+                {
+                    text: 'ரத்துசெய்',
+                    role: 'cancel',
+                    handler: () => {
+                    }
+                }
+            ]
+        }).then(confirm => confirm.present());
     }
     news_data() {
         this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {

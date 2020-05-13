@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title color=\"primary\" style=\"font-size: medium; font-family: NotoSansTamil-Regular;\">பிரிவுகள்</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button href=\"/profile\">\r\n        <ion-icon name=\"settings\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list class=menu_list>\r\n    <ion-item>\r\n    </ion-item>\r\n    <ion-item (click)=\"login()\" color=\"primary\">\r\n      <div class=\"ion_label\">\r\n        <ion-label>உள்நுழை</ion-label>\r\n      </div>\r\n    </ion-item>\r\n    <ion-item (click)=\"register()\" color=\"primary\">\r\n      <div class=\"ion_label\">\r\n        <ion-label>புதிய பதிவு செய்தல்</ion-label>\r\n      </div>\r\n    </ion-item>\r\n    <ion-item (click)=\"quit()\" color=\"primary\">\r\n      <div class=\"ion_label\">\r\n        <ion-label>வெளியேறு</ion-label>\r\n      </div>\r\n    </ion-item>\r\n  </ion-list>\r\n\r\n  <ion-grid class=\"ionGridMain\">\r\n    <!-- <ion-row> -->\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/tamilnadu.png\" (click)=\"tamilnadu()\">\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/India.png\" (click)=\"india()\">\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/world.png\" (click)=\"world()\">\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/Politics.png\" > <!-- (click)=\"politics()\" -->\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/economics.png\" (click)=\"economics()\">\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/technology.png\" >  <!-- (click)=\"technology()\" -->\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/agriculture.png\"> <!-- (click)=\"agri()\" -->\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/sports.png\"> <!-- (click)=\"sports()\" -->\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/entertainment.png\" > <!-- (click)=\"entertainment()\" -->\r\n    </ion-col>\r\n    <!-- </ion-row> -->\r\n  </ion-grid>\r\n\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-button (click)=\"settingsClick()\">\r\n        <ion-icon name=\"settings\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <ion-title color=\"primary\" style=\"font-size: medium; font-family: NotoSansTamil-Regular;\">பிரிவுகள்</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button *ngIf=\"!user\" (click)=\"profileClick()\">\r\n        <ion-icon name=\"person\"></ion-icon>\r\n      </ion-button>\r\n      <ion-button *ngIf=\"user\" (click)=\"profile()\">\r\n        <ion-icon name=\"person\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list class=menu_list>\r\n    <ion-item>\r\n    </ion-item>\r\n    <ion-item *ngIf=\"!user\" (click)=\"login()\" color=\"primary\">\r\n      <div class=\"ion_label\">\r\n        <ion-label>உள்நுழை</ion-label>\r\n      </div>\r\n    </ion-item>\r\n    <ion-item *ngIf=\"!user\" (click)=\"register()\" color=\"primary\">\r\n      <div class=\"ion_label\">\r\n        <ion-label>புதிய பதிவு செய்தல்</ion-label>\r\n      </div>\r\n    </ion-item>\r\n    <ion-item (click)=\"quit()\" color=\"primary\">\r\n      <div class=\"ion_label\">\r\n        <ion-label>வெளியேறு</ion-label>\r\n      </div>\r\n    </ion-item>\r\n  </ion-list>\r\n\r\n  <ion-grid class=\"ionGridMain\">\r\n    <!-- <ion-row> -->\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/tamilnadu.png\" (click)=\"tamilnadu()\">\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/India.png\" (click)=\"india()\">\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/world.png\" (click)=\"world()\">\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/Politics.png\" > <!-- (click)=\"politics()\" -->\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/economics.png\" (click)=\"economics()\">\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/technology.png\" >  <!-- (click)=\"technology()\" -->\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/agriculture.png\"> <!-- (click)=\"agri()\" -->\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/sports.png\"> <!-- (click)=\"sports()\" -->\r\n    </ion-col>\r\n    <ion-col class=ionGrid>\r\n      <img src=\"../../assets/Images/entertainment.png\" > <!-- (click)=\"entertainment()\" -->\r\n    </ion-col>\r\n    <!-- </ion-row> -->\r\n  </ion-grid>\r\n\r\n</ion-content>");
 
 /***/ }),
 
@@ -120,17 +120,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
+
+
 
 
 
 let CategoryPage = class CategoryPage {
-    constructor(router) {
+    constructor(router, alertCtrl, fireauth) {
         this.router = router;
+        this.alertCtrl = alertCtrl;
+        this.fireauth = fireauth;
+        this.userWantsToLogin = false;
+        this.userWantsToRegistration = false;
+        this.fireauth.auth.onAuthStateChanged((user) => {
+            if (user) {
+                this.user = user;
+                console.log(this.user);
+            }
+        });
+    }
+    profile() {
+        this.router.navigate(['../profile']);
+    }
+    profileClick() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const confirm = yield this.alertCtrl.create({
+                header: 'உறுதிப்படுத்தவும்!',
+                message: 'உங்கள் சுயவிவரத்தைக் காண நீங்கள் முதலில் பதிவு செய்ய வேண்டும்.',
+                buttons: [
+                    {
+                        text: 'சரி',
+                        handler: () => {
+                            console.log('சரி என்பதை உறுதிப்படுத்தவும்');
+                            this.router.navigate(['../profile']);
+                        }
+                    },
+                    {
+                        text: 'ரத்துசெய்',
+                        role: 'cancel',
+                        handler: () => {
+                            console.log('ரத்துசெய்வதை உறுதிப்படுத்தவும்');
+                        }
+                    }
+                ]
+            });
+            yield confirm.present();
+        });
+    }
+    settingsClick() {
+        this.router.navigate(['../settings']);
     }
     quit() {
-        if (window.confirm("மெட்ராஸ் டெய்லியில் இருந்து வெளியேற விரும்புகிறீர்களா?")) {
-            navigator["app"].exitApp();
-        }
+        let confirm = this.alertCtrl.create({
+            header: 'உறுதிப்படுத்தவும்!',
+            message: 'மெட்ராஸ் டெய்லியில் இருந்து வெளியேற விரும்புகிறீர்களா?',
+            buttons: [
+                {
+                    text: 'சரி',
+                    handler: () => {
+                        navigator["app"].exitApp();
+                        ;
+                    }
+                },
+                {
+                    text: 'ரத்துசெய்',
+                    role: 'cancel',
+                    handler: () => {
+                    }
+                }
+            ]
+        }).then(confirm => confirm.present());
     }
     login() {
         this.router.navigate(['../login']);
@@ -169,7 +230,9 @@ let CategoryPage = class CategoryPage {
     }
 };
 CategoryPage.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"] },
+    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"] }
 ];
 CategoryPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -177,7 +240,9 @@ CategoryPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./category.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/category/category.page.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./category.page.scss */ "./src/app/category/category.page.scss")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"],
+        _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"]])
 ], CategoryPage);
 
 

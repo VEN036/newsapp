@@ -254,9 +254,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this.presentToast('புதிய பதிவு வெற்றி பெற்றது', false, 'bottom', 1000);
 
-            _this.router.navigate(['login']);
+            _this.router.navigate(['profile']);
           }).catch(function (error) {
-            window.alert("தொடர்ந்து புதிய பதிவைப் பயன்படுத்துவதற்கு சரியான மின்னஞ்சல் முகவரியைக் கொடுங்கள்");
+            _this.presentToast('தொடர்ந்து புதிய பதிவைப் பயன்படுத்துவதற்கு சரியான மின்னஞ்சல் முகவரியைக் கொடுங்கள்', false, 'bottom', 1000);
           });
         }
       }, {

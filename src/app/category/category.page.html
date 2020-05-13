@@ -7,7 +7,10 @@
     </ion-buttons>
     <ion-title color="primary" style="font-size: medium; font-family: NotoSansTamil-Regular;">பிரிவுகள்</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="profileClick()">
+      <ion-button *ngIf="!user" (click)="profileClick()">
+        <ion-icon name="person"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="user" (click)="profile()">
         <ion-icon name="person"></ion-icon>
       </ion-button>
     </ion-buttons>

@@ -695,14 +695,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _shared_firebaseuser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/firebaseuser */ "./src/app/shared/firebaseuser.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
-/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.cjs.js");
-/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_7__);
-
-
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
 
 
 
@@ -743,31 +738,6 @@ let AuthenticationService = class AuthenticationService {
     //   })
     // }
     // Recover password
-    getCurrentUser() {
-        return new Promise((resolve, reject) => {
-            firebase__WEBPACK_IMPORTED_MODULE_7__["auth"]().onAuthStateChanged(function (user) {
-                let userModel = new _shared_firebaseuser__WEBPACK_IMPORTED_MODULE_3__["FirebaseUserModel"]();
-                if (user) {
-                    if (user.providerData[0].providerId == 'password') {
-                        //use a default image
-                        userModel.image = user.photoURL;
-                        userModel.name = user.displayName;
-                        userModel.provider = user.providerData[0].providerId;
-                        return resolve(userModel);
-                    }
-                    else {
-                        userModel.image = user.photoURL;
-                        userModel.name = user.displayName;
-                        userModel.provider = user.providerData[0].providerId;
-                        return resolve(userModel);
-                    }
-                }
-                else {
-                    reject('No user logged in');
-                }
-            });
-        });
-    }
     PasswordRecover(passwordResetEmail) {
         return this.ngFireAuth.auth.sendPasswordResetEmail(passwordResetEmail)
             .then(() => {
@@ -833,44 +803,21 @@ let AuthenticationService = class AuthenticationService {
     }
 };
 AuthenticationService.ctorParameters = () => [
-    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"] },
-    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"] },
+    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
 ];
 AuthenticationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestore"],
-        _angular_fire_auth__WEBPACK_IMPORTED_MODULE_5__["AngularFireAuth"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"],
+        _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
 ], AuthenticationService);
 
-
-
-/***/ }),
-
-/***/ "./src/app/shared/firebaseuser.ts":
-/*!****************************************!*\
-  !*** ./src/app/shared/firebaseuser.ts ***!
-  \****************************************/
-/*! exports provided: FirebaseUserModel */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirebaseUserModel", function() { return FirebaseUserModel; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-
-class FirebaseUserModel {
-    constructor() {
-        this.image = "";
-        this.name = "";
-        this.provider = "";
-    }
-}
 
 
 /***/ })
