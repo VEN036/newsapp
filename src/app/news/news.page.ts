@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { timer } from 'rxjs/observable/timer';
 import { Router, RouterEvent } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Screenshot } from '@ionic-native/screenshot/ngx';
-import { analytics } from 'firebase';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-news',
@@ -14,6 +15,8 @@ import { analytics } from 'firebase';
 })
 
 export class NewsPage {
+  actionSheet: any;
+
   slideOpts = {
     speed: 500,
     effect: 'coverflow',
@@ -41,22 +44,14 @@ export class NewsPage {
   url: any;
 
   pages = [
-    // {
-    //   title: 'Category',
-    //   url: 'news/category'
-    // },
     {
       title: 'உள்நுழைக',
       url: '../login'
     },
     {
-      // title: 'பதிவு',
+
       url: '../category'
     },
-    // {
-    //   title: 'About',
-    //   url: 'news/about'
-    // }
   ];
 
   selectedPath = '';
@@ -89,8 +84,14 @@ export class NewsPage {
       confirm.present());
   }
 
-  constructor(private http: Http, private router: Router, private platform: Platform,
-    private socialSharing: SocialSharing, public screenshot: Screenshot) {
+  constructor(
+    private http: Http, 
+    private router: Router, 
+    private platform: Platform,
+    private socialSharing: SocialSharing, 
+    public screenshot: Screenshot,
+    public actionSheetController: ActionSheetController
+    ) {
 
     this.subscribe = this.platform.backButton.subscribeWithPriority(666666, () => {
       if (this.constructor.name == "NewsPage") {
@@ -103,29 +104,6 @@ export class NewsPage {
     });
 
     this.news_data();
-
-
-    // this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {
-    //   var data = data.data;
-
-    //   var newsType = JSON.parse(data).filter(function (entry){
-    //     return entry.news_type === 'பொருளாதாரம்';
-    //   })
-    
-    //   console.log(newsType);
-    // },
-    //   err => {
-    //     console.log("Oops!")
-    //   });
-
-
-
- 
-// JSON.parse(this.url).filter(function(entry){
-//   return entry.news_type === 'பொருளாதாரம்';
-// });
-    
-
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
     });
@@ -134,11 +112,7 @@ export class NewsPage {
   news_data(){
   this.http.get('https://madras-daily.herokuapp.com/api/news').map(res => res.json()).subscribe(data => {
   this.data = data.data;
-  // this.newsType = this.data.filter(function (entry){
-  //     return entry.news_type === 'பொருளாதாரம்';
-  //   })
-  
-    console.log(this.newsType);
+  console.log(this.newsType);
   },
     err => {
       console.log("Oops!")
@@ -148,18 +122,94 @@ export class NewsPage {
   menuClick(){
     this.router.navigate(['../category']);
   }
-  // shareNews(){
-  //   this.screenshot.URI(80).then((res) =>{
-  //     this.socialSharing.share('this.message','this.subject','res.URI','this.url')
-  //   .then(()=>
-  //   {
+  
+  ShareSheet() {
+    this.actionSheet = this.actionSheetController.create({
+      header: 'Social Share Via',
+      buttons: [{
+        text: 'facebook',
+        icon: 'logo-facebook',
+        handler: () => {
+          this.platform.ready( ).then(() => {
+            this.screenshot.URI(80)
+              .then((res) => {
+                this.socialSharing.shareViaFacebook(null, res.URI, null)
+                 .then(() => {},
+                   () => { 
+                     alert('facebook share failed');
+                   });
+                 },
+                () => {
+                alert('screenshot failed');
+                });
+              });
+        }
+      }, {
+        text: 'whatsapp',
+        icon: 'logo-whatsapp',
+        handler: () => {
+          this.platform.ready().then(() => {
+            this.screenshot.URI(80)
+              .then((res) => {
+                this.socialSharing.shareViaWhatsApp(null, res.URI, null)
+                 .then(() => {},
+                   () => { 
+                     alert('whatsapp share failed');
+                   });
+                 },
+                () => {
+                alert('screenshot failed');
+                });
+              });
+        }
+      }, {
+        text: 'instagram',
+        icon: 'logo-instagram',
+        handler: () => {
+          this.platform.ready().then(() => {
+            this.screenshot.URI(80)
+              .then((res) => {
+                this.socialSharing.shareViaInstagram(null, res.URI)
+                 .then(() => {},
+                   () => { 
+                     alert('instagram share failed');
+                   });
+                 },
+                () => {
+                alert('screenshot failed');
+                });
+              });
+        }
+      }, {
+        text: 'twitter',
+        icon: 'logo-twitter',
+        handler: () => {
+          this.platform.ready().then(() => {
+            this.screenshot.URI(80)
+              .then((res) => {
+                this.socialSharing.shareViaTwitter(null, res.URI, null)
+                 .then(() => {},
+                   () => { 
+                     alert('twitter share failed');
+                   });
+                 },
+                () => {
+                alert('screenshot failed');
+                });
+              });
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    }).then(actionsheet => {
+      actionsheet.present();
+    });
+  }
 
-  //   }).catch(()=>{
-  //     alert('Sorry...There is a problem in sharing the news.')
-  //   });
-
-  //   },
-  //   ()=> {alert('failed');});
-  // }
 
 }

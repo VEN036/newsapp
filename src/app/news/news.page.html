@@ -92,3 +92,12 @@
       </ion-card>
     </ion-slide>
   </ion-slides>
+
+  <ion-tab-bar slot="bottom" *ngIf="hideMe">
+    <ion-tab-button (click)="ShareSheet()">
+      <ion-icon name="share"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button>
+      <ion-icon name="bookmark"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>

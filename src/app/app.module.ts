@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { File } from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import {Screenshot} from'@ionic-native/screenshot/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
@@ -23,7 +24,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { environment } from 'src/environments/environment.prod';
 import * as firebase from 'firebase';
-import {Screenshot} from'@ionic-native/screenshot/ngx';
 firebase.initializeApp(environment.firebaseConfig);
 
 @NgModule({
