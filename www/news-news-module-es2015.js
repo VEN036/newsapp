@@ -331,72 +331,32 @@ let NewsPage = class NewsPage {
                     text: 'facebook',
                     icon: 'logo-facebook',
                     handler: () => {
-                        this.hideMe = !this.hideMe;
-                        console.log("Hide Bars");
-                        this.platform.ready().then(() => {
-                            this.screenshot.URI(80)
-                                .then((res) => {
-                                this.socialSharing.shareViaFacebook(null, res.URI, null)
-                                    .then(() => { }, () => {
-                                    alert('facebook share failed');
-                                });
-                            }, () => {
-                                alert('screenshot failed');
-                            });
+                        this.actionSheet = this.actionSheetController.dismiss().then((res) => {
+                            this.facebookShare();
                         });
                     }
                 }, {
                     text: 'whatsapp',
                     icon: 'logo-whatsapp',
                     handler: () => {
-                        this.hideMe = !this.hideMe;
-                        console.log("Hide Bars");
-                        this.platform.ready().then(() => {
-                            this.screenshot.URI(80)
-                                .then((res) => {
-                                this.socialSharing.shareViaWhatsApp(null, res.URI, null)
-                                    .then(() => { }, () => {
-                                    alert('whatsapp share failed');
-                                });
-                            }, () => {
-                                alert('screenshot failed');
-                            });
+                        this.actionSheet = this.actionSheetController.dismiss().then((res) => {
+                            this.whatsappShare();
                         });
                     }
                 }, {
                     text: 'instagram',
                     icon: 'logo-instagram',
                     handler: () => {
-                        this.hideMe = !this.hideMe;
-                        console.log("Hide Bars");
-                        this.platform.ready().then(() => {
-                            this.screenshot.URI(80)
-                                .then((res) => {
-                                this.socialSharing.shareViaInstagram(null, res.URI)
-                                    .then(() => { }, () => {
-                                    alert('instagram share failed');
-                                });
-                            }, () => {
-                                alert('screenshot failed');
-                            });
+                        this.actionSheet = this.actionSheetController.dismiss().then((res) => {
+                            this.instagramShare();
                         });
                     }
                 }, {
                     text: 'twitter',
                     icon: 'logo-twitter',
                     handler: () => {
-                        this.hideMe = !this.hideMe;
-                        console.log("Hide Bars");
-                        this.platform.ready().then(() => {
-                            this.screenshot.URI(80)
-                                .then((res) => {
-                                this.socialSharing.shareViaTwitter(null, res.URI, null)
-                                    .then(() => { }, () => {
-                                    alert('twitter share failed');
-                                });
-                            }, () => {
-                                alert('screenshot failed');
-                            });
+                        this.actionSheet = this.actionSheetController.dismiss().then((res) => {
+                            this.twitterShare();
                         });
                     }
                 }, {
@@ -409,6 +369,59 @@ let NewsPage = class NewsPage {
                 }]
         }).then(actionsheet => {
             actionsheet.present();
+        });
+        this.hideMe = !this.hideMe;
+    }
+    facebookShare() {
+        this.platform.ready().then(() => {
+            this.screenshot.URI(80)
+                .then((res) => {
+                this.socialSharing.shareViaFacebook(null, res.URI, null)
+                    .then(() => { }, () => {
+                    alert('facebook share failed');
+                });
+            }, () => {
+                alert('screenshot failed');
+            });
+        });
+    }
+    whatsappShare() {
+        this.platform.ready().then(() => {
+            this.screenshot.URI(80)
+                .then((res) => {
+                this.socialSharing.shareViaWhatsApp(null, res.URI, null)
+                    .then(() => { }, () => {
+                    alert('whatsapp share failed');
+                });
+            }, () => {
+                alert('screenshot failed');
+            });
+        });
+    }
+    instagramShare() {
+        this.platform.ready().then(() => {
+            this.screenshot.URI(80)
+                .then((res) => {
+                this.socialSharing.shareViaInstagram(null, res.URI)
+                    .then(() => { }, () => {
+                    alert('instagram share failed');
+                });
+            }, () => {
+                alert('screenshot failed');
+            });
+        });
+    }
+    twitterShare() {
+        this.platform.ready().then(() => {
+            this.screenshot.URI(80)
+                .then((res) => {
+                this.socialSharing.shareViaTwitter(null, res.URI, null)
+                    .then(() => { }, () => {
+                    alert('twitter share failed');
+                });
+            }, () => {
+                alert('screenshot failed');
+            });
         });
     }
 };

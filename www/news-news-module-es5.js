@@ -524,68 +524,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               text: 'facebook',
               icon: 'logo-facebook',
               handler: function handler() {
-                _this3.hideMe = !_this3.hideMe;
-                console.log("Hide Bars");
-
-                _this3.platform.ready().then(function () {
-                  _this3.screenshot.URI(80).then(function (res) {
-                    _this3.socialSharing.shareViaFacebook(null, res.URI, null).then(function () {}, function () {
-                      alert('facebook share failed');
-                    });
-                  }, function () {
-                    alert('screenshot failed');
-                  });
+                _this3.actionSheet = _this3.actionSheetController.dismiss().then(function (res) {
+                  _this3.facebookShare();
                 });
               }
             }, {
               text: 'whatsapp',
               icon: 'logo-whatsapp',
               handler: function handler() {
-                _this3.hideMe = !_this3.hideMe;
-                console.log("Hide Bars");
-
-                _this3.platform.ready().then(function () {
-                  _this3.screenshot.URI(80).then(function (res) {
-                    _this3.socialSharing.shareViaWhatsApp(null, res.URI, null).then(function () {}, function () {
-                      alert('whatsapp share failed');
-                    });
-                  }, function () {
-                    alert('screenshot failed');
-                  });
+                _this3.actionSheet = _this3.actionSheetController.dismiss().then(function (res) {
+                  _this3.whatsappShare();
                 });
               }
             }, {
               text: 'instagram',
               icon: 'logo-instagram',
               handler: function handler() {
-                _this3.hideMe = !_this3.hideMe;
-                console.log("Hide Bars");
-
-                _this3.platform.ready().then(function () {
-                  _this3.screenshot.URI(80).then(function (res) {
-                    _this3.socialSharing.shareViaInstagram(null, res.URI).then(function () {}, function () {
-                      alert('instagram share failed');
-                    });
-                  }, function () {
-                    alert('screenshot failed');
-                  });
+                _this3.actionSheet = _this3.actionSheetController.dismiss().then(function (res) {
+                  _this3.instagramShare();
                 });
               }
             }, {
               text: 'twitter',
               icon: 'logo-twitter',
               handler: function handler() {
-                _this3.hideMe = !_this3.hideMe;
-                console.log("Hide Bars");
-
-                _this3.platform.ready().then(function () {
-                  _this3.screenshot.URI(80).then(function (res) {
-                    _this3.socialSharing.shareViaTwitter(null, res.URI, null).then(function () {}, function () {
-                      alert('twitter share failed');
-                    });
-                  }, function () {
-                    alert('screenshot failed');
-                  });
+                _this3.actionSheet = _this3.actionSheetController.dismiss().then(function (res) {
+                  _this3.twitterShare();
                 });
               }
             }, {
@@ -598,6 +562,67 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }]
           }).then(function (actionsheet) {
             actionsheet.present();
+          });
+          this.hideMe = !this.hideMe;
+        }
+      }, {
+        key: "facebookShare",
+        value: function facebookShare() {
+          var _this4 = this;
+
+          this.platform.ready().then(function () {
+            _this4.screenshot.URI(80).then(function (res) {
+              _this4.socialSharing.shareViaFacebook(null, res.URI, null).then(function () {}, function () {
+                alert('facebook share failed');
+              });
+            }, function () {
+              alert('screenshot failed');
+            });
+          });
+        }
+      }, {
+        key: "whatsappShare",
+        value: function whatsappShare() {
+          var _this5 = this;
+
+          this.platform.ready().then(function () {
+            _this5.screenshot.URI(80).then(function (res) {
+              _this5.socialSharing.shareViaWhatsApp(null, res.URI, null).then(function () {}, function () {
+                alert('whatsapp share failed');
+              });
+            }, function () {
+              alert('screenshot failed');
+            });
+          });
+        }
+      }, {
+        key: "instagramShare",
+        value: function instagramShare() {
+          var _this6 = this;
+
+          this.platform.ready().then(function () {
+            _this6.screenshot.URI(80).then(function (res) {
+              _this6.socialSharing.shareViaInstagram(null, res.URI).then(function () {}, function () {
+                alert('instagram share failed');
+              });
+            }, function () {
+              alert('screenshot failed');
+            });
+          });
+        }
+      }, {
+        key: "twitterShare",
+        value: function twitterShare() {
+          var _this7 = this;
+
+          this.platform.ready().then(function () {
+            _this7.screenshot.URI(80).then(function (res) {
+              _this7.socialSharing.shareViaTwitter(null, res.URI, null).then(function () {}, function () {
+                alert('twitter share failed');
+              });
+            }, function () {
+              alert('screenshot failed');
+            });
           });
         }
       }]);
