@@ -468,6 +468,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       _createClass(NewsPage, [{
+        key: "ionViewDidLoad",
+        value: function ionViewDidLoad() {
+          this.message = "Welcome to Madras Daily";
+          this.link = "https://play.google.com/store/apps/details?id=com.test.madrasDaily";
+          this.URI = this.screenshot.save;
+        }
+      }, {
         key: "singleTap",
         value: function singleTap() {
           this.hideMe = !this.hideMe;
@@ -519,9 +526,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this3 = this;
 
           this.actionSheet = this.actionSheetController.create({
-            header: 'Social Share Via',
+            header: 'வழியாக பகிரவும்',
             buttons: [{
-              text: 'facebook',
+              text: 'முகநூல்',
               icon: 'logo-facebook',
               handler: function handler() {
                 _this3.actionSheet = _this3.actionSheetController.dismiss().then(function (res) {
@@ -529,7 +536,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 });
               }
             }, {
-              text: 'whatsapp',
+              text: 'பகிரி',
               icon: 'logo-whatsapp',
               handler: function handler() {
                 _this3.actionSheet = _this3.actionSheetController.dismiss().then(function (res) {
@@ -537,7 +544,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 });
               }
             }, {
-              text: 'instagram',
+              text: 'இன்ஸ்டாகிராம்',
               icon: 'logo-instagram',
               handler: function handler() {
                 _this3.actionSheet = _this3.actionSheetController.dismiss().then(function (res) {
@@ -545,7 +552,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 });
               }
             }, {
-              text: 'twitter',
+              text: 'ட்விட்டர்',
               icon: 'logo-twitter',
               handler: function handler() {
                 _this3.actionSheet = _this3.actionSheetController.dismiss().then(function (res) {
@@ -553,7 +560,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 });
               }
             }, {
-              text: 'Cancel',
+              text: 'ரத்துசெய்',
               icon: 'close',
               role: 'cancel',
               handler: function handler() {
@@ -572,11 +579,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.platform.ready().then(function () {
             _this4.screenshot.URI(80).then(function (res) {
-              _this4.socialSharing.shareViaFacebook(null, res.URI, null).then(function () {}, function () {
-                alert('facebook share failed');
+              _this4.socialSharing.shareViaFacebook(_this4.message, res.URI, _this4.link).then(function () {}, function () {
+                alert('முகநூல் வழியாக பகிர் தோல்வியுற்றது');
               });
             }, function () {
-              alert('screenshot failed');
+              alert('ஸ்கிரீன் ஷாட் தோல்வியடைந்தது');
             });
           });
         }
@@ -587,11 +594,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.platform.ready().then(function () {
             _this5.screenshot.URI(80).then(function (res) {
-              _this5.socialSharing.shareViaWhatsApp(null, res.URI, null).then(function () {}, function () {
-                alert('whatsapp share failed');
+              _this5.socialSharing.shareViaWhatsApp(_this5.message, res.URI, _this5.link).then(function () {}, function () {
+                alert('பகிரி வழியாக பகிர் தோல்வியுற்றது');
               });
             }, function () {
-              alert('screenshot failed');
+              alert('ஸ்கிரீன் ஷாட் தோல்வியடைந்தது');
             });
           });
         }
@@ -602,11 +609,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.platform.ready().then(function () {
             _this6.screenshot.URI(80).then(function (res) {
-              _this6.socialSharing.shareViaInstagram(null, res.URI).then(function () {}, function () {
-                alert('instagram share failed');
+              _this6.socialSharing.shareViaInstagram(_this6.message, res.URI).then(function () {}, function () {
+                alert('இன்ஸ்டாகிராம் வழியாக பகிர் தோல்வியுற்றது');
               });
             }, function () {
-              alert('screenshot failed');
+              alert('ஸ்கிரீன் ஷாட் தோல்வியடைந்தது');
             });
           });
         }
@@ -616,12 +623,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this7 = this;
 
           this.platform.ready().then(function () {
-            _this7.screenshot.URI(80).then(function (res) {
-              _this7.socialSharing.shareViaTwitter(null, res.URI, null).then(function () {}, function () {
-                alert('twitter share failed');
+            _this7.screenshot.URI(80).then(function () {
+              _this7.socialSharing.shareViaTwitter(_this7.message, _this7.URI, _this7.link).then(function () {}, function () {
+                alert('ட்விட்டர் வழியாக பகிர் தோல்வியுற்றது');
               });
             }, function () {
-              alert('screenshot failed');
+              alert('ஸ்கிரீன் ஷாட் தோல்வியடைந்தது');
             });
           });
         }

@@ -14,8 +14,6 @@ import { ActionSheetController } from '@ionic/angular';
 })
 
 export class NewsPage {
-  actionSheet: any;
-
   slideOpts = {
     speed: 500,
     effect: 'coverflow',
@@ -40,7 +38,11 @@ export class NewsPage {
 
   subscribe: any;
   hideMe: boolean = false;
+  actionSheet: any;
   url: any;
+  message: string;
+  link: string;
+  URI: any;
 
   pages = [
     {
@@ -55,6 +57,12 @@ export class NewsPage {
 
   selectedPath = '';
   alertCtrl: any;
+
+  ionViewDidLoad() {
+    this.message = "Welcome to Madras Daily";
+    this.link = "https://play.google.com/store/apps/details?id=com.test.madrasDaily";
+    this.URI = this.screenshot.save;
+  }
 
   singleTap() {
     this.hideMe = !this.hideMe;
@@ -124,9 +132,9 @@ export class NewsPage {
   
   ShareSheet() {
     this.actionSheet = this.actionSheetController.create({
-      header: 'Social Share Via',
+      header: 'வழியாக பகிரவும்',
       buttons: [{
-        text: 'facebook',
+        text: 'முகநூல்',
         icon: 'logo-facebook',
         handler: () => {
           this.actionSheet = this.actionSheetController.dismiss().then((res) => {
@@ -134,7 +142,7 @@ export class NewsPage {
           })
         }
       }, {
-        text: 'whatsapp',
+        text: 'பகிரி',
         icon: 'logo-whatsapp',
         handler: () => {
           this.actionSheet = this.actionSheetController.dismiss().then((res) => {
@@ -142,7 +150,7 @@ export class NewsPage {
           })
         }
       }, {
-        text: 'instagram',
+        text: 'இன்ஸ்டாகிராம்',
         icon: 'logo-instagram',
         handler: () => {
           this.actionSheet = this.actionSheetController.dismiss().then((res) => {
@@ -150,7 +158,7 @@ export class NewsPage {
           })
         }
       }, {
-        text: 'twitter',
+        text: 'ட்விட்டர்',
         icon: 'logo-twitter',
         handler: () => {
           this.actionSheet = this.actionSheetController.dismiss().then((res) => {
@@ -158,7 +166,7 @@ export class NewsPage {
           })
         }
       }, {
-        text: 'Cancel',
+        text: 'ரத்துசெய்',
         icon: 'close',
         role: 'cancel',
         handler: () => {
@@ -175,14 +183,14 @@ export class NewsPage {
     this.platform.ready().then(() => {
       this.screenshot.URI(80)
         .then((res) => {
-          this.socialSharing.shareViaFacebook(null, res.URI, null)
+          this.socialSharing.shareViaFacebook(this.message, res.URI, this.link)
            .then(() => {},
              () => { 
-               alert('facebook share failed');
+               alert('முகநூல் வழியாக பகிர் தோல்வியுற்றது');
              });
            },
           () => {
-          alert('screenshot failed');
+          alert('ஸ்கிரீன் ஷாட் தோல்வியடைந்தது');
           });
         });
   }
@@ -191,14 +199,14 @@ export class NewsPage {
     this.platform.ready().then(() => {
       this.screenshot.URI(80)
         .then((res) => {
-          this.socialSharing.shareViaWhatsApp(null, res.URI, null)
+          this.socialSharing.shareViaWhatsApp(this.message, res.URI, this.link)
            .then(() => {},
              () => { 
-               alert('whatsapp share failed');
+               alert('பகிரி வழியாக பகிர் தோல்வியுற்றது');
              });
            },
           () => {
-          alert('screenshot failed');
+          alert('ஸ்கிரீன் ஷாட் தோல்வியடைந்தது');
           });
         });
   }
@@ -207,14 +215,14 @@ export class NewsPage {
     this.platform.ready().then(() => {
       this.screenshot.URI(80)
         .then((res) => {
-          this.socialSharing.shareViaInstagram(null, res.URI)
+          this.socialSharing.shareViaInstagram(this.message, res.URI)
            .then(() => {},
              () => { 
-               alert('instagram share failed');
+               alert('இன்ஸ்டாகிராம் வழியாக பகிர் தோல்வியுற்றது');
              });
            },
           () => {
-          alert('screenshot failed');
+          alert('ஸ்கிரீன் ஷாட் தோல்வியடைந்தது');
           });
         });
   }
@@ -222,15 +230,15 @@ export class NewsPage {
   twitterShare() {
     this.platform.ready().then(() => {
       this.screenshot.URI(80)
-        .then((res) => {
-          this.socialSharing.shareViaTwitter(null, res.URI, null)
+        .then(() => {
+          this.socialSharing.shareViaTwitter(this.message, this.URI, this.link)
            .then(() => {},
              () => { 
-               alert('twitter share failed');
+               alert('ட்விட்டர் வழியாக பகிர் தோல்வியுற்றது');
              });
            },
           () => {
-          alert('screenshot failed');
+          alert('ஸ்கிரீன் ஷாட் தோல்வியடைந்தது');
           });
         });
   }
