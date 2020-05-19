@@ -97,7 +97,10 @@
     <ion-tab-button (click)="ShareSheet()">
       <ion-icon name="share"></ion-icon>
     </ion-tab-button>
-    <ion-tab-button>
-      <ion-icon name="bookmark"></ion-icon>
+    <ion-tab-button (click)="unbookmarkNews()" *ngIf="isBookmark">
+      <ion-icon name="bookmarks"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button (click)=" bookmarkNews()" *ngIf="!isBookmark">
+      <ion-icon name="bookmarks"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>

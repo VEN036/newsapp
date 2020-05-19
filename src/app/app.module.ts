@@ -11,12 +11,14 @@ import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { File } from '@ionic-native/file/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import {Screenshot} from'@ionic-native/screenshot/ngx';
+import { Screenshot } from'@ionic-native/screenshot/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';  
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IonicStorageModule } from '@ionic/storage';
+import { BookmarkService } from './services/bookmark.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -47,7 +49,8 @@ firebase.initializeApp(environment.firebaseConfig);
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
@@ -58,7 +61,8 @@ firebase.initializeApp(environment.firebaseConfig);
     SocialSharing,
     Screenshot,
     OpenNativeSettings,
-    OneSignal
+    OneSignal,
+    BookmarkService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
