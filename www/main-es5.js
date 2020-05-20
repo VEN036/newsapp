@@ -1268,53 +1268,65 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_fire__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _services_bookmark_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    /*! ./services/bookmark.service */
+    "./src/app/services/bookmark.service.ts");
+    /* harmony import */
+
+
+    var _angular_fire__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
     /*! @angular/fire */
     "./node_modules/@angular/fire/es2015/index.js");
     /* harmony import */
 
 
-    var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
     /*! @angular/fire/auth */
     "./node_modules/@angular/fire/auth/es2015/index.js");
     /* harmony import */
 
 
-    var _angular_fire_database__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    var _angular_fire_database__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
     /*! @angular/fire/database */
     "./node_modules/@angular/fire/database/es2015/index.js");
     /* harmony import */
 
 
-    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
     /*! @angular/fire/firestore */
     "./node_modules/@angular/fire/firestore/es2015/index.js");
     /* harmony import */
 
 
-    var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
+    var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
     /*! @angular/fire/storage */
     "./node_modules/@angular/fire/storage/es2015/index.js");
     /* harmony import */
 
 
-    var src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
+    var src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
     /*! src/environments/environment.prod */
     "./src/environments/environment.prod.ts");
     /* harmony import */
 
 
-    var firebase__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
+    var firebase__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
     /*! firebase */
     "./node_modules/firebase/dist/index.cjs.js");
     /* harmony import */
 
 
-    var firebase__WEBPACK_IMPORTED_MODULE_24___default =
+    var firebase__WEBPACK_IMPORTED_MODULE_26___default =
     /*#__PURE__*/
-    __webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_24__);
+    __webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_26__);
 
-    firebase__WEBPACK_IMPORTED_MODULE_24__["initializeApp"](src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_23__["environment"].firebaseConfig);
+    firebase__WEBPACK_IMPORTED_MODULE_26__["initializeApp"](src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_25__["environment"].firebaseConfig);
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -1325,17 +1337,120 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       entryComponents: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_17__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_17__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_13__["HttpClientModule"], _angular_http__WEBPACK_IMPORTED_MODULE_14__["HttpModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({
         backButtonText: ''
-      }), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_18__["AngularFireModule"].initializeApp(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_23__["environment"].firebaseConfig), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_19__["AngularFireAuthModule"], _angular_fire_database__WEBPACK_IMPORTED_MODULE_20__["AngularFireDatabaseModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_21__["AngularFirestoreModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_22__["AngularFireStorageModule"]],
+      }), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_20__["AngularFireModule"].initializeApp(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_25__["environment"].firebaseConfig), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_21__["AngularFireAuthModule"], _angular_fire_database__WEBPACK_IMPORTED_MODULE_22__["AngularFireDatabaseModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_23__["AngularFirestoreModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_24__["AngularFireStorageModule"], _ionic_storage__WEBPACK_IMPORTED_MODULE_18__["IonicStorageModule"].forRoot()],
       providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
       }, {
         provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ErrorHandler"],
         useClass: ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicErrorHandler"]
-      }, _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_10__["File"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_11__["SocialSharing"], _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_12__["Screenshot"], _ionic_native_open_native_settings_ngx__WEBPACK_IMPORTED_MODULE_15__["OpenNativeSettings"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_16__["OneSignal"]],
+      }, _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_10__["File"], _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_11__["SocialSharing"], _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_12__["Screenshot"], _ionic_native_open_native_settings_ngx__WEBPACK_IMPORTED_MODULE_15__["OpenNativeSettings"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_16__["OneSignal"], _services_bookmark_service__WEBPACK_IMPORTED_MODULE_19__["BookmarkService"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
       schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]]
     })], AppModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/services/bookmark.service.ts":
+  /*!**********************************************!*\
+    !*** ./src/app/services/bookmark.service.ts ***!
+    \**********************************************/
+
+  /*! exports provided: BookmarkService */
+
+  /***/
+  function srcAppServicesBookmarkServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "BookmarkService", function () {
+      return BookmarkService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
+    var STORAGE_KEY = 'bookmarkNews';
+
+    var BookmarkService =
+    /*#__PURE__*/
+    function () {
+      function BookmarkService(storage) {
+        _classCallCheck(this, BookmarkService);
+
+        this.storage = storage;
+      }
+
+      _createClass(BookmarkService, [{
+        key: "isBookmark",
+        value: function isBookmark(newsId) {
+          return this.getAllBookmarkNews().then(function (result) {
+            return result && result.indexOf(newsId) !== -1;
+          });
+        }
+      }, {
+        key: "bookmarkNews",
+        value: function bookmarkNews(newsId) {
+          var _this2 = this;
+
+          return this.getAllBookmarkNews().then(function (result) {
+            if (result) {
+              result.push(newsId);
+              return _this2.storage.set(STORAGE_KEY, result);
+            } else {
+              return _this2.storage.set(STORAGE_KEY, [newsId]);
+            }
+          });
+        }
+      }, {
+        key: "unbookmarkNews",
+        value: function unbookmarkNews(newsId) {
+          var _this3 = this;
+
+          return this.getAllBookmarkNews().then(function (result) {
+            if (result) {
+              var index = result.indexOf(newsId);
+              result.splice(index, 1);
+              return _this3.storage.set(STORAGE_KEY, result);
+            }
+          });
+        }
+      }, {
+        key: "getAllBookmarkNews",
+        value: function getAllBookmarkNews() {
+          return this.storage.get(STORAGE_KEY);
+        }
+      }]);
+
+      return BookmarkService;
+    }();
+
+    BookmarkService.ctorParameters = function () {
+      return [{
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"]
+      }];
+    };
+
+    BookmarkService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"]])], BookmarkService);
     /***/
   },
 

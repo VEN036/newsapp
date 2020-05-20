@@ -323,6 +323,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "OneSignal"
       ]
+    },
+    {
+      "id": "cordova-sqlite-storage.SQLitePlugin",
+      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+      "pluginId": "cordova-sqlite-storage",
+      "clobbers": [
+        "SQLitePlugin"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -338,6 +346,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-x-socialsharing": "5.6.4",
     "com.darktalker.cordova.screenshot": "0.1.5",
-    "onesignal-cordova-plugin": "2.9.1"
+    "onesignal-cordova-plugin": "2.9.1",
+    "cordova-sqlite-storage": "5.0.0"
   };
 });

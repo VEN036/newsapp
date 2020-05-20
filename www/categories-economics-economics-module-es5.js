@@ -223,6 +223,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, EconomicsPage);
 
         this.http = http;
+        this.slideOpts = {
+          speed: 500,
+          effect: 'coverflow',
+          slidesPerView: 1,
+          slideOffsetBefore: 10,
+          slideOffsetAftrer: 10,
+          direction: 'vertical',
+          centeredSlides: true,
+          coverflowEffect: {
+            rotate: 20,
+            streach: 100,
+            depth: 100,
+            shadow: true,
+            slideShadows: true,
+            shadowOffset: 20,
+            modifier: 1
+          }
+        };
         this.data = [];
         this.newsType = [];
         this.hideMe = true;

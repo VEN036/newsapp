@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>agriculture</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n</ion-content>\r\n";
+    __webpack_exports__["default"] = "<ion-toolbar *ngIf=\"hideMe\">\r\n  <ion-buttons slot=\"start\">\r\n    <ion-back-button defaultHref=\"/\"></ion-back-button>\r\n  </ion-buttons>\r\n  <ion-buttons slot=\"end\">\r\n    <ion-button href=\"/news\">\r\n      <ion-icon name=\"md-home\" color=\"primary\"></ion-icon>\r\n    </ion-button>\r\n  </ion-buttons>\r\n  <ion-title color=\"primary\">வேளாண்மை</ion-title>\r\n</ion-toolbar>\r\n\r\n<div class=screen>\r\n  <ion-slides pager=\"false\" [options]=\"slideOpts\" (ionSlideTap)=\"singleTap()\">\r\n    <ion-slide *ngFor=\"let data of newsType\">\r\n      <ion-card class=\"ion-no-margin\">\r\n        <div class=image [style.backgroundImage]=\"'url(' + data.news_pics + ')'\"></div>\r\n        <div class=\"heading\">\r\n          {{ data.heading }}\r\n        </div>\r\n        <div class=ion_content>\r\n          <div class=newstype>\r\n            {{ data.news_type }} / {{data.last_updated | date: 'dd-MM-yyyy'}}\r\n          </div>\r\n          <div class=content>\r\n            {{ data.news_content }}\r\n          </div>\r\n        </div>\r\n      </ion-card>\r\n    </ion-slide>\r\n  </ion-slides>";
     /***/
   },
 
@@ -209,21 +209,80 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/http */
+    "./node_modules/@angular/http/@angular/http.js");
 
     var AgriculturePage =
     /*#__PURE__*/
     function () {
-      function AgriculturePage() {
+      function AgriculturePage(http) {
         _classCallCheck(this, AgriculturePage);
+
+        this.http = http;
+        this.slideOpts = {
+          speed: 500,
+          effect: 'coverflow',
+          slidesPerView: 1,
+          slideOffsetBefore: 10,
+          slideOffsetAftrer: 10,
+          direction: 'vertical',
+          centeredSlides: true,
+          coverflowEffect: {
+            rotate: 20,
+            streach: 100,
+            depth: 100,
+            shadow: true,
+            slideShadows: true,
+            shadowOffset: 20,
+            modifier: 1
+          }
+        };
+        this.data = [];
+        this.newsType = [];
+        this.hideMe = true;
+        this.news_data();
       }
 
       _createClass(AgriculturePage, [{
+        key: "singleTap",
+        value: function singleTap() {
+          this.hideMe = !this.hideMe;
+          console.log("Single tap operation done");
+        }
+      }, {
+        key: "news_data",
+        value: function news_data() {
+          var _this = this;
+
+          this.http.get('https://madras-daily.herokuapp.com/api/news').map(function (res) {
+            return res.json();
+          }).subscribe(function (data) {
+            _this.data = data.data;
+            _this.newsType = _this.data.filter(function (entry) {
+              return entry.news_type === 'வேளாண்மை';
+            });
+            console.log(_this.newsType);
+          }, function (err) {
+            console.log("Oops!");
+          });
+        }
+      }, {
         key: "ngOnInit",
         value: function ngOnInit() {}
       }]);
 
       return AgriculturePage;
     }();
+
+    AgriculturePage.ctorParameters = function () {
+      return [{
+        type: _angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"]
+      }];
+    };
 
     AgriculturePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-agriculture',
@@ -233,7 +292,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./agriculture.page.scss */
       "./src/app/categories/agriculture/agriculture.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], AgriculturePage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"]])], AgriculturePage);
     /***/
   }
 }]);

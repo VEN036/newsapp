@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<head>\r\n  <link href=\"https://fonts.googleapis.com/css?family=Roboto&display=swap\" rel=\"stylesheet\">\r\n</head>\r\n\r\n<!-- <ion-ion-split-pane> -->\r\n<ion-toolbar *ngIf=\"hideMe\">\r\n  <ion-buttons slot=\"start\" (click)=\"menuClick()\">\r\n    <!-- <ion-buttons > -->\r\n      <ion-menu-button auto-hide=\"false\" color=\"primary\"></ion-menu-button>\r\n    <!-- </ion-buttons> -->\r\n  </ion-buttons>\r\n  <ion-buttons slot=\"end\">\r\n    <ion-button href=\"/news\">\r\n      <ion-icon name=\"ios-refresh\" color=\"primary\"></ion-icon>\r\n    </ion-button>\r\n  </ion-buttons>\r\n  <ion-title color=\"primary\">மெட்ராஸ் டெய்லி</ion-title>\r\n</ion-toolbar>\r\n\r\n<!-- <ion-menu contentId=\"content\">\r\n    <ion-header>\r\n      <ion-toolbar>\r\n        <ion-title> பட்டியல் </ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n\r\n    <ion-content>\r\n      <ion-item>\r\n        <ion-label></ion-label>\r\n      </ion-item>\r\n      <ion-list class=menu_list>\r\n        <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of pages\">\r\n          <ion-item [routerLink]=\"p.url\" routerDirection=\"root\" [class.active-item]=\"selectedPath === p.url\" color=\"primary\">\r\n            {{ p.title }}\r\n          </ion-item>\r\n        </ion-menu-toggle>\r\n        <ion-item (click)=\"quit()\" color=\"primary\">\r\n          <ion-label >வெளியேற</ion-label>\r\n        </ion-item>\r\n      </ion-list>\r\n    </ion-content>\r\n  </ion-menu> -->\r\n<ion-router-outlet id=\"content\" main></ion-router-outlet>\r\n\r\n<!-- Tab bar code (footer)-Start -->\r\n\r\n<!-- <ion-tab-bar slot=\"bottom\" translucent=\"true\" *ngIf=\"hideMe\">\r\n    <ion-tab-button (click)=\"shareNews()\">\r\n      <ion-icon name=\"md-share\" color=\"primary\"></ion-icon>\r\n      <ion-label color=\"primary\">Share</ion-label>\r\n    </ion-tab-button> -->\r\n\r\n<!--    <ion-tab-button href=\"/login\">\r\n      <ion-icon name=\"log-in\" color=\"primary\"></ion-icon>\r\n      <ion-label color=\"primary\">Login</ion-label>\r\n  </ion-tab-button>\r\n\r\n  <ion-tab-button href=\"/registration\">\r\n      <ion-icon name=\"person-add\" color=\"primary\"></ion-icon>\r\n      <ion-label color=\"primary\">Signup</ion-label>\r\n  </ion-tab-button>\r\n   <ion-tab-button href=\"/news\">\r\n      <ion-icon name=\"home\" color=\"primary\"></ion-icon>\r\n      <ion-label color=\"primary\">Home</ion-label>\r\n    </ion-tab-button>\r\n    \r\n     <ion-tab-button href=\"/bookmark\">\r\n    <ion-icon name=\"bookmark\"></ion-icon>\r\n  </ion-tab-button>\r\n  </ion-tab-bar> -->\r\n\r\n<!-- Tab bar code (footer)-End -->\r\n\r\n<!-- </ion-ion-split-pane> -->\r\n\r\n<div class=screen>\r\n  <ion-slides pager=\"false\" [options]=\"slideOpts\" (ionSlideTap)=\"singleTap()\">\r\n    <ion-slide *ngFor=\"let data of data\">\r\n      <ion-card class=\"ion-no-margin\">\r\n        <div class=image [style.backgroundImage]=\"'url(' + data.news_pics + ')'\"></div>\r\n        <div class=\"heading\">\r\n          {{ data.heading }}\r\n        </div>\r\n        <div class=ion_content>\r\n          <div class=newstype>\r\n            {{ data.news_type }} / {{data.last_updated | date: 'dd-MM-yyyy'}}\r\n          </div>\r\n          <div class=content>\r\n            {{ data.news_content }}\r\n          </div>\r\n        </div>\r\n      </ion-card>\r\n    </ion-slide>\r\n  </ion-slides>\r\n\r\n  <ion-tab-bar slot=\"bottom\" *ngIf=\"hideMe\">\r\n    <ion-tab-button (click)=\"ShareSheet()\">\r\n      <ion-icon name=\"share\"></ion-icon>\r\n    </ion-tab-button>\r\n    <ion-tab-button>\r\n      <ion-icon name=\"bookmark\"></ion-icon>\r\n    </ion-tab-button>\r\n  </ion-tab-bar>");
+/* harmony default export */ __webpack_exports__["default"] = ("<head>\r\n  <link href=\"https://fonts.googleapis.com/css?family=Roboto&display=swap\" rel=\"stylesheet\">\r\n</head>\r\n\r\n<!-- <ion-ion-split-pane> -->\r\n<ion-toolbar *ngIf=\"hideMe\">\r\n  <ion-buttons slot=\"start\" (click)=\"menuClick()\">\r\n    <!-- <ion-buttons > -->\r\n      <ion-menu-button auto-hide=\"false\" color=\"primary\"></ion-menu-button>\r\n    <!-- </ion-buttons> -->\r\n  </ion-buttons>\r\n  <ion-buttons slot=\"end\">\r\n    <ion-button href=\"/news\">\r\n      <ion-icon name=\"ios-refresh\" color=\"primary\"></ion-icon>\r\n    </ion-button>\r\n  </ion-buttons>\r\n  <ion-title color=\"primary\">மெட்ராஸ் டெய்லி</ion-title>\r\n</ion-toolbar>\r\n\r\n<!-- <ion-menu contentId=\"content\">\r\n    <ion-header>\r\n      <ion-toolbar>\r\n        <ion-title> பட்டியல் </ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n\r\n    <ion-content>\r\n      <ion-item>\r\n        <ion-label></ion-label>\r\n      </ion-item>\r\n      <ion-list class=menu_list>\r\n        <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of pages\">\r\n          <ion-item [routerLink]=\"p.url\" routerDirection=\"root\" [class.active-item]=\"selectedPath === p.url\" color=\"primary\">\r\n            {{ p.title }}\r\n          </ion-item>\r\n        </ion-menu-toggle>\r\n        <ion-item (click)=\"quit()\" color=\"primary\">\r\n          <ion-label >வெளியேற</ion-label>\r\n        </ion-item>\r\n      </ion-list>\r\n    </ion-content>\r\n  </ion-menu> -->\r\n<ion-router-outlet id=\"content\" main></ion-router-outlet>\r\n\r\n<!-- Tab bar code (footer)-Start -->\r\n\r\n<!-- <ion-tab-bar slot=\"bottom\" translucent=\"true\" *ngIf=\"hideMe\">\r\n    <ion-tab-button (click)=\"shareNews()\">\r\n      <ion-icon name=\"md-share\" color=\"primary\"></ion-icon>\r\n      <ion-label color=\"primary\">Share</ion-label>\r\n    </ion-tab-button> -->\r\n\r\n<!--    <ion-tab-button href=\"/login\">\r\n      <ion-icon name=\"log-in\" color=\"primary\"></ion-icon>\r\n      <ion-label color=\"primary\">Login</ion-label>\r\n  </ion-tab-button>\r\n\r\n  <ion-tab-button href=\"/registration\">\r\n      <ion-icon name=\"person-add\" color=\"primary\"></ion-icon>\r\n      <ion-label color=\"primary\">Signup</ion-label>\r\n  </ion-tab-button>\r\n   <ion-tab-button href=\"/news\">\r\n      <ion-icon name=\"home\" color=\"primary\"></ion-icon>\r\n      <ion-label color=\"primary\">Home</ion-label>\r\n    </ion-tab-button>\r\n    \r\n     <ion-tab-button href=\"/bookmark\">\r\n    <ion-icon name=\"bookmark\"></ion-icon>\r\n  </ion-tab-button>\r\n  </ion-tab-bar> -->\r\n\r\n<!-- Tab bar code (footer)-End -->\r\n\r\n<!-- </ion-ion-split-pane> -->\r\n\r\n<div class=screen>\r\n  <ion-slides pager=\"false\" [options]=\"slideOpts\" (ionSlideTap)=\"singleTap()\">\r\n    <ion-slide *ngFor=\"let data of data\">\r\n      <ion-card class=\"ion-no-margin\">\r\n        <div class=image [style.backgroundImage]=\"'url(' + data.news_pics + ')'\"></div>\r\n        <div class=\"heading\">\r\n          {{ data.heading }}\r\n        </div>\r\n        <div class=ion_content>\r\n          <div class=newstype>\r\n            {{ data.news_type }} / {{data.last_updated | date: 'dd-MM-yyyy'}}\r\n          </div>\r\n          <div class=content>\r\n            {{ data.news_content }}\r\n          </div>\r\n        </div>\r\n      </ion-card>\r\n    </ion-slide>\r\n  </ion-slides>\r\n\r\n  <ion-tab-bar slot=\"bottom\" *ngIf=\"hideMe\">\r\n    <ion-tab-button (click)=\"ShareSheet()\">\r\n      <ion-icon name=\"share\"></ion-icon>\r\n    </ion-tab-button>\r\n    <ion-tab-button (click)=\"unbookmarkNews()\" *ngIf=\"isBookmark\">\r\n      <ion-icon name=\"bookmarks\"></ion-icon>\r\n    </ion-tab-button>\r\n    <ion-tab-button (click)=\" bookmarkNews()\" *ngIf=\"!isBookmark\">\r\n      <ion-icon name=\"bookmarks\"></ion-icon>\r\n    </ion-tab-button>\r\n  </ion-tab-bar>");
 
 /***/ }),
 
@@ -221,11 +221,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/@angular/http.js");
-/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm2015/add/operator/map.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/social-sharing/ngx */ "./node_modules/@ionic-native/social-sharing/ngx/index.js");
-/* harmony import */ var _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/screenshot/ngx */ "./node_modules/@ionic-native/screenshot/ngx/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/social-sharing/ngx */ "./node_modules/@ionic-native/social-sharing/ngx/index.js");
+/* harmony import */ var _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/screenshot/ngx */ "./node_modules/@ionic-native/screenshot/ngx/index.js");
+/* harmony import */ var _services_bookmark_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/bookmark.service */ "./src/app/services/bookmark.service.ts");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm2015/add/operator/map.js");
+
 
 
 
@@ -236,13 +238,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let NewsPage = class NewsPage {
-    constructor(http, router, platform, socialSharing, screenshot, actionSheetController) {
+    constructor(http, router, platform, socialSharing, screenshot, actionSheetController, bookmarkService, toastController) {
         this.http = http;
         this.router = router;
         this.platform = platform;
         this.socialSharing = socialSharing;
         this.screenshot = screenshot;
         this.actionSheetController = actionSheetController;
+        this.bookmarkService = bookmarkService;
+        this.toastController = toastController;
         this.slideOpts = {
             speed: 500,
             effect: 'coverflow',
@@ -264,6 +268,7 @@ let NewsPage = class NewsPage {
         this.data = [];
         this.newsType = [];
         this.hideMe = false;
+        this.isBookmark = false;
         this.pages = [
             {
                 title: 'உள்நுழைக',
@@ -286,6 +291,10 @@ let NewsPage = class NewsPage {
         this.news_data();
         this.router.events.subscribe((event) => {
             this.selectedPath = event.url;
+        });
+        this.heading = this.http.get('heading');
+        this.bookmarkService.isBookmark(this.heading.news_id).then(isBook => {
+            this.isBookmark = isBook;
         });
     }
     ionViewDidLoad() {
@@ -328,6 +337,22 @@ let NewsPage = class NewsPage {
     }
     menuClick() {
         this.router.navigate(['../category']);
+    }
+    bookmarkNews() {
+        this.bookmarkService.bookmarkNews(this.heading.news_id).then(() => {
+            this.isBookmark = true;
+        }).then(data => {
+            console.log(data);
+            this.presentToast('செய்தி புக்மார்க்கைச் சேர்த்தது', false, 'bottom', 1000);
+        });
+    }
+    unbookmarkNews() {
+        this.bookmarkService.unbookmarkNews(this.heading.news_id).then(() => {
+            this.isBookmark = false;
+        }).then(data => {
+            console.log(data);
+            this.presentToast('புக்மார்க்கிலிருந்து செய்தி நீக்கப்பட்டது', false, 'bottom', 1000);
+        });
     }
     ShareSheet() {
         this.actionSheet = this.actionSheetController.create({
@@ -429,14 +454,27 @@ let NewsPage = class NewsPage {
             });
         });
     }
+    presentToast(message, show_button, position, duration) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message: message,
+                showCloseButton: show_button,
+                position: position,
+                duration: duration
+            });
+            toast.present();
+        });
+    }
 };
 NewsPage.ctorParameters = () => [
     { type: _angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"] },
-    { type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__["SocialSharing"] },
-    { type: _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_7__["Screenshot"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ActionSheetController"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
+    { type: _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_5__["SocialSharing"] },
+    { type: _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_6__["Screenshot"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"] },
+    { type: _services_bookmark_service__WEBPACK_IMPORTED_MODULE_7__["BookmarkService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] }
 ];
 NewsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -445,11 +483,13 @@ NewsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./news.page.scss */ "./src/app/news/news.page.scss")).default]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"],
-        _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_6__["SocialSharing"],
-        _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_7__["Screenshot"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ActionSheetController"]])
+        _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"],
+        _ionic_native_social_sharing_ngx__WEBPACK_IMPORTED_MODULE_5__["SocialSharing"],
+        _ionic_native_screenshot_ngx__WEBPACK_IMPORTED_MODULE_6__["Screenshot"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"],
+        _services_bookmark_service__WEBPACK_IMPORTED_MODULE_7__["BookmarkService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]])
 ], NewsPage);
 
 
